@@ -8,6 +8,7 @@ namespace LightBot.ViewModels
 {
     internal class LightBotViewModel
     {
-        //Prueba
+        
+
     }
 }
