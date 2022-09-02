@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:LightBot.Views"
         mc:Ignorable="d"
         Title="LightBotView" Height="450" Width="800">
-    <Grid>
+    <Grid Background="Red">
         
     </Grid>
 </Window>
