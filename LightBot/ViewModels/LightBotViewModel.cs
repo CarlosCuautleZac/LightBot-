@@ -16,7 +16,7 @@ namespace LightBot.ViewModels
         {
             juego = new();
             NuevoJuego(1);
-            Mover("YOLO,ARRIBA,ABAJO,IZQUIERDA,DERECHA");
+            Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
         }
 
         //Metodo para empezar un nuevo juego
@@ -52,7 +52,7 @@ namespace LightBot.ViewModels
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
                     //Aqui vemos si es izquierda o derecha y separamos todo
-                    if (instrucciones[i] == "IZQUIERDA" && juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && juego.Posicion[1] != 'H')
+                    if (instrucciones[i] == "IZQUIERDA" && juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && juego.Posicion[1] != 'G')
                     {
                         if (instrucciones[i] == "IZQUIERDA")
                             juego.Posicion[1] = (char)(juego.Posicion[1] + 1);
@@ -61,8 +61,8 @@ namespace LightBot.ViewModels
                     }
                     else
                     {
-                        //Aqui vemos si es arriba o abajo y separamos todo (cambiar valores de arriba a 0 y abajo a 7 si esto no funciona)
-                        if (instrucciones[i] == "ARRIBA" && juego.Posicion[0] != '1' || instrucciones[i] == "ABAJO" && juego.Posicion[0] != '8')
+                        //Aqui vemos si es arriba o abajo y separamos todo
+                        if (instrucciones[i] == "ARRIBA" && juego.Posicion[0] != '0' || instrucciones[i] == "ABAJO" && juego.Posicion[0] != '7')
                         {
                             if (instrucciones[i] == "ARRIBA")
                                 juego.Posicion[0] = (char)(juego.Posicion[0] + 1);
@@ -81,10 +81,8 @@ namespace LightBot.ViewModels
         private bool ValidarMovimientos(string movimientos)
         {
             var instrucciones = movimientos.Split(',');
-
             if (instrucciones.Length > 5)
                 return false;
-
             else
             {
                     for (int x = 0; x < instrucciones.Length; x++)
