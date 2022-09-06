@@ -51,22 +51,25 @@ namespace LightBot.ViewModels
                 //Obtenemos la pieza actual
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
-
                     //Aqui vemos si es izquierda o derecha y separamos todo
-                    if (instrucciones[i] == "IZQUIERDA" || instrucciones[i] == "DERECHA")
+                    if (instrucciones[i] == "IZQUIERDA" && juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && juego.Posicion[1] != 'H')
                     {
                         if (instrucciones[i] == "IZQUIERDA")
                             juego.Posicion[1] = (char)(juego.Posicion[1] + 1);
                         else
                             juego.Posicion[1] = (char)(juego.Posicion[1] - 1);
                     }
-
                     else
                     {
-                        if (instrucciones[i] == "ARRIBA")
-                            juego.Posicion[0] = (char)(juego.Posicion[0] + 1);
-                        else
-                            juego.Posicion[0] = (char)(juego.Posicion[0] - 1);
+                        //Aqui vemos si es arriba o abajo y separamos todo (cambiar valores de arriba a 0 y abajo a 7 si esto no funciona)
+                        if (instrucciones[i] == "ARRIBA" && juego.Posicion[0] != '1' || instrucciones[i] == "ABAJO" && juego.Posicion[0] != '8')
+                        {
+                            if (instrucciones[i] == "ARRIBA")
+                                juego.Posicion[0] = (char)(juego.Posicion[0] + 1);
+                            else
+                                juego.Posicion[0] = (char)(juego.Posicion[0] - 1);
+                        }
+                            
                     }
 
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
