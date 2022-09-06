@@ -15,6 +15,8 @@ namespace LightBot.ViewModels
         public LightBotViewModel()
         {
             juego = new();
+            NuevoJuego(1);
+            Mover("YOLO,ARRIBA,ABAJO,IZQUIERDA,DERECHA");
         }
 
         //Metodo para empezar un nuevo juego
@@ -45,6 +47,7 @@ namespace LightBot.ViewModels
                 //Separamos las instrucciones
                 var instrucciones = movimientos.Split(',');
 
+
                 //Obtenemos la pieza actual
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
@@ -61,9 +64,9 @@ namespace LightBot.ViewModels
                     else
                     {
                         if (instrucciones[i] == "ARRIBA")
-                            juego.Posicion[1] = (char)(juego.Posicion[0] + 1);
+                            juego.Posicion[0] = (char)(juego.Posicion[0] + 1);
                         else
-                            juego.Posicion[1] = (char)(juego.Posicion[0] - 1);
+                            juego.Posicion[0] = (char)(juego.Posicion[0] - 1);
                     }
 
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
@@ -74,7 +77,24 @@ namespace LightBot.ViewModels
 
         private bool ValidarMovimientos(string movimientos)
         {
-            return true;
+            var instrucciones = movimientos.Split(',');
+
+            if (instrucciones.Length > 5)
+                return false;
+
+            else
+            {
+                    for (int x = 0; x < instrucciones.Length; x++)
+                    {
+                    if (instrucciones[x] == "IZQUIERDA" || instrucciones[x] == "DERECHA"
+                        || instrucciones[x] == "ARRIBA" || instrucciones[x] == "ABAJO")
+                        continue;
+                    else
+                        return false;
+                    }
+
+                return true;    
+            }
         }
     }
 }
