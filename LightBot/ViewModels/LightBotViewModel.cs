@@ -94,7 +94,25 @@ namespace LightBot.ViewModels
                     await Task.Delay(3000);
 
                 }
+
+                VerificarIntento();
             }
+        }
+
+        private void VerificarIntento()
+        {
+            if (juego.Vidas >=0)
+            {
+                if (juego.Posicion[0] == '2' && juego.Posicion[1] == 'D')
+                {
+                    throw new ArgumentException("¡Felicidades, superaste el primer nivel!");
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Perdiste, Fin del Juego");
+            }
+
         }
 
         private void VerificarMovimientos(int movimientos)

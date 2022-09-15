@@ -12,7 +12,7 @@ namespace LightBot.Models
 
         public char[] Posicion { get; set; }
 
-        public int Movimientos { get; set; }
+        public int Movimientos{ get; set; }
 
         public double Puntos { get; set; } = 0;
     }
