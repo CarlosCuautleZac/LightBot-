@@ -55,9 +55,15 @@ namespace LightBot.ViewModels
                     if (instrucciones[i] == "IZQUIERDA" && juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && juego.Posicion[1] != 'G')
                     {
                         if (instrucciones[i] == "IZQUIERDA")
+                        {
                             juego.Posicion[1] = (char)(juego.Posicion[1] + 1);
+                            juego.Movimientos -= 1;
+                        }
                         else
+                        {
                             juego.Posicion[1] = (char)(juego.Posicion[1] - 1);
+                            juego.Movimientos -= 1;
+                        }
                     }
                     else
                     {
@@ -65,17 +71,39 @@ namespace LightBot.ViewModels
                         if (instrucciones[i] == "ARRIBA" && juego.Posicion[0] != '0' || instrucciones[i] == "ABAJO" && juego.Posicion[0] != '7')
                         {
                             if (instrucciones[i] == "ARRIBA")
+                            {
                                 juego.Posicion[0] = (char)(juego.Posicion[0] + 1);
+                                juego.Movimientos -= 1;
+
+                            }
                             else
+                            {
                                 juego.Posicion[0] = (char)(juego.Posicion[0] - 1);
+                                juego.Movimientos -= 1;
+                            }
                         }
                             
                     }
 
+
+                    //Si ya no quedan movimientos game over si no llegaste o si estas en la meta win
+                    VerificarMovimientos(juego.Movimientos);
+
+
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
                     await Task.Delay(3000);
+
                 }
             }
+        }
+
+        private void VerificarMovimientos(int movimientos)
+        {
+            if(movimientos == 0)
+            {
+                throw new ArgumentException("Felicidades, C");
+            }
+
         }
 
         private bool ValidarMovimientos(string movimientos)
