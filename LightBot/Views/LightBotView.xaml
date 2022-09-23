@@ -10,7 +10,6 @@
         <Image Source="/Assets/fondo.jpg"
                    Stretch="UniformToFill"></Image>
         <DockPanel>
-            <WrapPanel DockPanel.Dock="Top"></WrapPanel>
             <Grid DockPanel.Dock="Bottom"
                     Height="130">
                 <TextBlock></TextBlock>
