@@ -20,34 +20,137 @@
                 BorderBrush="#E14D2A"
                 Width="700"
                 Height="700">
-            <UniformGrid Columns="5"
-                         Rows="5">
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-                <Border Background="#FFAE6D"></Border>
-                <Border Background="#FFE9A0"></Border>
-            </UniformGrid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Border Background="#FFE9A0"
+                        Grid.Row="0"></Border>
+                
+                <Border Background="#FFAE6D"
+                        Grid.Column="1"
+                        Grid.Row="0"></Border>
+                
+                <Border Background="#FFE9A0" 
+                        Grid.Column="2"
+                        Grid.Row="0"></Border>
+                
+                <Border Background="#FFAE6D" 
+                        Grid.Column="3"
+                        Grid.Row="0"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="4"
+                        Grid.Row="0"></Border>
+
+                <Border Background="#FFAE6D"
+                        Grid.Column="0"
+                        Grid.Row="1"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="1"
+                        Grid.Row="1"></Border>
+
+                <Border Background="#FFAE6D" 
+                        Grid.Column="2"
+                        Grid.Row="1"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="3"
+                        Grid.Row="1"></Border>
+
+
+                <Border Background="#FFAE6D"
+                        Grid.Column="4"
+                        Grid.Row="1"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="2"
+                        Grid.Row="2"></Border>
+
+                <Border Background="#FFAE6D" 
+                        Grid.Column="3"
+                        Grid.Row="2"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="4"
+                        Grid.Row="2"></Border>
+
+
+                <Border Background="#FFAE6D"
+                        Grid.Column="1"
+                        Grid.Row="2"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="0"
+                        Grid.Row="2"></Border>
+
+                <Border Background="#FFAE6D" 
+                        Grid.Column="0"
+                        Grid.Row="3"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="1"
+                        Grid.Row="3"></Border>
+
+                <Border Background="#FFAE6D"
+                        Grid.Column="2"
+                        Grid.Row="3"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="3"
+                        Grid.Row="3"></Border>
+
+                <Border Background="#FFAE6D" 
+                        Grid.Column="4"
+                        Grid.Row="3"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="4"
+                        Grid.Row="4"></Border>
+
+
+                <Border Background="#FFAE6D"
+                        Grid.Column="3"
+                        Grid.Row="4"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="2"
+                        Grid.Row="4"></Border>
+
+                <Border Background="#FFAE6D" 
+                        Grid.Column="1"
+                        Grid.Row="4"></Border>
+
+                <Border Background="#FFE9A0" 
+                        Grid.Column="0"
+                        Grid.Row="4"></Border>
+
+                <Image Source="/Assets/lostCow1.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Grid.Column="2"
+                       Grid.Row="1"></Image>
+
+                <Image Source="/Assets/cowGirl.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Grid.Column="2"
+                       Grid.Row="4"></Image>
+                
+
+            </Grid>
         </Border>
 
         <Grid Grid.Column="1"
@@ -65,7 +168,19 @@
                 
                 <Border Background="#FFAE6D"
                         BorderThickness="10"
-                        BorderBrush="#E14D2A"></Border>
+                        BorderBrush="#E14D2A"
+                        Width="500">
+                    <TextBlock Style="{StaticResource txtFlechas}">
+                        &#8592;
+                        &#8592;
+                        &#8592;
+                        &#8592;
+                        &#8592;
+                        &#8592;&#8592;
+                        &#8592;
+                        &#8592;
+                    </TextBlock>
+                </Border>
             </DockPanel>
 
             <Grid Grid.Row="1"
@@ -97,8 +212,10 @@
                 <Button Grid.Column="1"
                         Grid.Row="2"
                         Style="{StaticResource botonControl}">&#8595;
-                </Button> 
-                
+                </Button>
+                <Button Grid.Column="1"
+                        Grid.Row="1"
+                        Style="{StaticResource botonControl}">&#9673;</Button>
                 
             </Grid>
             
