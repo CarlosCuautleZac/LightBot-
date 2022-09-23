@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot.Views"
         mc:Ignorable="d"
-        Title="LightBotView" Height="450" Width="800">
-    <Grid Background="Red">
+        Title="Light Bot" MinHeight="790" MinWidth="1300">
+    <Grid>
+        <Image Source="/Assets/fondo.jpg"
+                   Stretch="UniformToFill"></Image>
+        <DockPanel>
+            <WrapPanel DockPanel.Dock="Top"></WrapPanel>
+            <Grid DockPanel.Dock="Bottom"
+                    Height="130">
+                <TextBlock></TextBlock>
+                
+                <Button Content="JUGARRR"
+                        Style="{StaticResource botonGrande}">
+                    
+                    
+                    <Button.RenderTransform>
+                        <ScaleTransform x:Name="resorte"></ScaleTransform>
+                    </Button.RenderTransform>
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation BeginTime="0:0:0"
+                                                 Duration="0:0:01"
+                                                 From=".85"
+                                                 To="1"
+                                                 Storyboard.TargetName="resorte"
+                                                 Storyboard.TargetProperty="ScaleY"
+                                                 RepeatBehavior="Forever"
+                                                 AutoReverse="True"></DoubleAnimation>
+                                    <DoubleAnimation BeginTime="0:0:0"
+                                                 Duration="0:0:01"
+                                                 From=".85"
+                                                 To="1"
+                                                 Storyboard.TargetName="resorte"
+                                                 Storyboard.TargetProperty="ScaleX"
+                                                 RepeatBehavior="Forever"
+                                                 AutoReverse="True"></DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </Grid>
+            <Grid></Grid>
+        </DockPanel>
         
     </Grid>
 </Window>

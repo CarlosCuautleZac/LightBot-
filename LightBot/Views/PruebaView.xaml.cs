@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 namespace LightBot.Views
 {
     /// <summary>
-    /// Interaction logic for LightBotView.xaml
+    /// Interaction logic for PruebaView.xaml
     /// </summary>
-    public partial class LightBotView : Window
+    public partial class PruebaView : Window
     {
-        public LightBotView()
+        public PruebaView()
         {
-            InitializeComponent();                  
-        }       
+            InitializeComponent();
+        }
     }
 }
