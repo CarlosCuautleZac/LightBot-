@@ -1,16 +1,22 @@
 ﻿using LightBot.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LightBot.ViewModels
 {
-    internal class LightBotViewModel
+    internal class LightBotViewModel:INotifyPropertyChanged
     {
 
         Juego juego;
+
+        
+
+        //
+        public string Resultado { get; set; } = "";
 
         public LightBotViewModel()
         {
@@ -87,26 +93,35 @@ namespace LightBot.ViewModels
 
 
                     //Si ya no quedan movimientos game over si no llegaste o si estas en la meta win
-                    VerificarMovimientos(juego.Movimientos);
+                    //VerificarMovimientos(juego.Movimientos);
 
-
+                    Actualizar();
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
                     await Task.Delay(3000);
-
+                    
                 }
 
+                
                 VerificarIntento();
+                Actualizar();
             }
         }
 
         private void VerificarIntento()
         {
-            if (juego.Vidas >=0)
+            if (juego.Vidas >0)
             {
                 if (juego.Posicion[0] == '2' && juego.Posicion[1] == 'D')
                 {
-                    throw new ArgumentException("¡Felicidades, superaste el primer nivel!");
+                    Resultado = "¡Felicidades, superaste el primer nivel!";
                 }
+
+                else
+                {
+                    Resultado = "¡sigamos buscando a la vaquita!";
+                    juego.Vidas -= 1;
+                }
+
             }
             else
             {
@@ -143,5 +158,13 @@ namespace LightBot.ViewModels
                 return true;    
             }
         }
+
+        
+        public void Actualizar()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
     }
 }
