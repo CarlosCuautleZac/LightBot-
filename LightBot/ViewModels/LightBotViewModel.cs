@@ -45,6 +45,7 @@ namespace LightBot.ViewModels
         {
             movimiento = movimiento.ToUpper();
             TotalMovimientos += movimiento +"," ;
+            Actualizar();
         }
 
         //Metodo para empezar un nuevo juego
@@ -133,6 +134,7 @@ namespace LightBot.ViewModels
                 
                 VerificarIntento();
                 Actualizar();
+
             }
         }
 
@@ -140,7 +142,7 @@ namespace LightBot.ViewModels
         {
             if (juego.Vidas >0)
             {
-                if (juego.Posicion[0] == '2' && juego.Posicion[1] == 'D')
+                if (juego.Posicion[0] == '4' && juego.Posicion[1] == 'C')
                 {
                     Resultado = "¡Felicidades, superaste el primer nivel!";
                 }
