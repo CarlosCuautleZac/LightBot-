@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot.Views"
+        xmlns:vm="clr-namespace:LightBot.ViewModels"
+        xmlns:convertidor="clr-namespace:LightBot.Helpers"
         mc:Ignorable="d"
         Title="Niveles" Height="790" Width="1300" ResizeMode="NoResize">
     <Window.Background>
@@ -14,6 +16,9 @@
             </DrawingBrush.Drawing>
         </DrawingBrush>
     </Window.Background>
+    <Window.DataContext>
+        <vm:LightBotViewModel></vm:LightBotViewModel>
+    </Window.DataContext>
     <Grid>
         <DockPanel>
             <Grid DockPanel.Dock="Top">
@@ -27,18 +32,26 @@
                     <Button Style="{StaticResource botonControl}"
                             Width="100"
                             Height="100"
-                            Margin="0,0,50,0">1</Button>
+                            Margin="0,0,50,0"
+                            Command="{Binding NuevoJuegoCommand}"
+                            CommandParameter="1">1</Button>
                     <Button Style="{StaticResource botonControl}"
                             Width="100"
                             Margin="0,0,50,0"
-                            Height="100">2</Button>
+                            Height="100"
+                            Command="{Binding NuevoJuegoCommand}"
+                            CommandParameter="2">>2</Button>
                     <Button Style="{StaticResource botonControl}"
                             Width="100"
                             Margin="0,0,50,0"
-                            Height="100">3</Button>
+                            Height="100"
+                            Command="{Binding NuevoJuegoCommand}"
+                            CommandParameter="3">>3</Button>
                     <Button Style="{StaticResource botonControl}"
                             Width="100"
-                            Height="100">4</Button>
+                            Height="100"
+                            Command="{Binding NuevoJuegoCommand}"
+                            CommandParameter="4">>4</Button>
                 </WrapPanel>
             </Grid>
         </DockPanel>
