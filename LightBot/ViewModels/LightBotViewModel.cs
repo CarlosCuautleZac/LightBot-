@@ -34,10 +34,10 @@ namespace LightBot.ViewModels
             NuevoJuegoCommand = new RelayCommand<int>(NuevoJuego);
             MoverCommand = new RelayCommand(Mover);
             ConcatenarMovimientosCommand = new RelayCommand<string>(ConcatenarMovimientos);
-            ConcatenarMovimientos("Arriba");
-            ConcatenarMovimientos("abajo");
-            ConcatenarMovimientos("izquierda");
-            Mover();
+            //ConcatenarMovimientos("Arriba");
+            //ConcatenarMovimientos("abajo");
+            //ConcatenarMovimientos("izquierda");
+            //Mover();
         }
 
         private void ConcatenarMovimientos(string movimiento)
