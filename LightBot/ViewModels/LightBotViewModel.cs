@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using LightBot.Models;
+using LightBot.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -61,6 +62,9 @@ namespace LightBot.ViewModels
                 juego.Posicion = new char[2];
                 juego.Posicion[0] = '1';
                 juego.Posicion[1] = 'C';
+                JugandoView jugandoView = new() { DataContext = this };
+                jugandoView.ShowDialog();
+                
             }
         }
 
