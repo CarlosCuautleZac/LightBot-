@@ -18,16 +18,32 @@ namespace LightBot.ViewModels
         public ICommand NuevoJuegoCommand { get; set; }
         public ICommand MoverCommand { get; set; }
 
+        public ICommand ConcatenarMovimientosCommand { get; set; }
+
         //
         public string Resultado { get; set; } = "";
 
+        public string TotalMovimientos { get; set; } = "";
+
+        //Constructor//
         public LightBotViewModel()
         {
             juego = new();
             //NuevoJuego(1);
             //Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
             NuevoJuegoCommand = new RelayCommand<int>(NuevoJuego);
-            MoverCommand = new RelayCommand<string>(Mover);
+            MoverCommand = new RelayCommand(Mover);
+            ConcatenarMovimientosCommand = new RelayCommand<string>(ConcatenarMovimientos);
+            ConcatenarMovimientos("Arriba");
+            ConcatenarMovimientos("abajo");
+            ConcatenarMovimientos("izquierda");
+            Mover();
+        }
+
+        private void ConcatenarMovimientos(string movimiento)
+        {
+            movimiento = movimiento.ToUpper();
+            TotalMovimientos += movimiento +"," ;
         }
 
         //Metodo para empezar un nuevo juego
@@ -50,13 +66,15 @@ namespace LightBot.ViewModels
 
         //Metodo para mover el personaje a la zona de meta o a otra posicion, obteien como parametro 
         //La serie de movimientos
-        public async void Mover(string movimientos)
+        public async void Mover()
         {
+            if(TotalMovimientos!="")
+                TotalMovimientos = TotalMovimientos.Remove(TotalMovimientos.Length - 1, 1);
             //Validamos los movimientos
-            if (ValidarMovimientos(movimientos))
+            if (ValidarMovimientos(TotalMovimientos))
             {
                 //Separamos las instrucciones
-                var instrucciones = movimientos.Split(',');
+                var instrucciones = TotalMovimientos.Split(',');
 
 
                 //Obtenemos la pieza actual
@@ -98,7 +116,7 @@ namespace LightBot.ViewModels
 
 
                     //Si ya no quedan movimientos game over si no llegaste o si estas en la meta win
-                    //VerificarMovimientos(juego.Movimientos);
+                    //VerificarMovimientos(juego.TotalMovimientos);
 
                     Actualizar();
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
