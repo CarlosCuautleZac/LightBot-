@@ -214,10 +214,11 @@
                 <Button Grid.Column="0"
                         Grid.Row="1"
                         Style="{StaticResource botonControl}"
-                        Command="{Binding .}">&#8592;
+                        Command="{Binding MoverCommand.Izquierda}">&#8592;
                 </Button>
                 <Button Grid.Column="1"
-                        Style="{StaticResource botonControl}">&#8593;
+                        Style="{StaticResource botonControl}"
+                        Command="{Binding MoverCommand.Arriba}">&#8593;
                 </Button>
                 <Button Grid.Column="2"
                         Grid.Row="1"

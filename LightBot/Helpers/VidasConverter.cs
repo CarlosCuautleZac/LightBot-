@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using LightBot.Models;
 using LightBot.ViewModels;
 
 namespace LightBot.Helpers
@@ -13,10 +14,14 @@ namespace LightBot.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            //if (value == )
-            //{
-
-            //}
+            if (value.ToString() == "2")
+            {
+                return "&#x2764; &#x2764;";
+            }
+            if (value.ToString() == "2")
+            {
+                return "&#x2764; &#x274C;";
+            }
 
 
 
