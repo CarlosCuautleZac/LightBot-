@@ -161,11 +161,18 @@
             </Grid.RowDefinitions>
 
             <DockPanel>
-                <TextBlock DockPanel.Dock="Top"
-                           Text="P A S O S"
-                           Margin="0,10,0,20"
+                <WrapPanel DockPanel.Dock="Top"
+                            Orientation="Vertical">
+                    <TextBlock Text="PASOS RESTANTES"
+                           Margin="0,10,20,20"
                            Style="{StaticResource textoGrande}"></TextBlock>
+                    <TextBlock Text="vIDAS RESTANTES"
+                           Margin="0,10,0,20"
+                               HorizontalAlignment="Left"
+                               Style="{StaticResource textoGrande}"></TextBlock>
 
+                </WrapPanel>
+    
                 <Border Background="#FFAE6D"
                         BorderThickness="10"
                         BorderBrush="#E14D2A"

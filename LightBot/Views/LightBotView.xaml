@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot.Views"
+        xmlns:vm="clr-namespace:LightBot.ViewModels"
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
         Title="Light Bot" Height="790" Width="1300" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:LightBotViewModel></vm:LightBotViewModel>
+    </Window.DataContext>
     <Grid>
         <Image Source="/Assets/fondo.jpg"
                    Stretch="UniformToFill"></Image>
