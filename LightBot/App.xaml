@@ -2,7 +2,7 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:LightBot"
-             StartupUri="/Views/PruebaView.xaml">
+             StartupUri="/Views/LightBotView.xaml">
     <Application.Resources>
 
        <!--BOTONEEEEEEEEEEEEEES-->
@@ -76,31 +76,40 @@
             <Setter Property="FontWeight" Value="Normal"></Setter>
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
         </Style>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+        <Style TargetType="TextBlock" x:Key="txtTitulo">
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="FontSize" Value="80"></Setter>
+            <Setter Property="FontFamily" Value="pack://application:,,,/assets/Fonts/#West Texas Demo"></Setter>
+            <Setter Property="FontWeight" Value="DemiBold"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Margin" Value="0,30,0,0"></Setter>
+        </Style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </Application.Resources>
 </Application>

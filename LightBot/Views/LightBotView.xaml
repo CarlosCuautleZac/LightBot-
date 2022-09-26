@@ -4,16 +4,25 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot.Views"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         mc:Ignorable="d"
-        Title="Light Bot" MinHeight="790" MinWidth="1300">
+        Title="Light Bot" Height="790" Width="1300" ResizeMode="NoResize">
     <Grid>
         <Image Source="/Assets/fondo.jpg"
                    Stretch="UniformToFill"></Image>
         <DockPanel>
             <Grid DockPanel.Dock="Bottom"
                     Height="130">
-                <TextBlock></TextBlock>
-                
+
+                <Image Source="/Assets/cowGirl.png"
+                       HorizontalAlignment="Left"
+                       Margin="50,0,0,10"></Image>
+
+                <Image gif:ImageBehavior.AnimatedSource="/Assets/losCow2.gif"
+                       gif:ImageBehavior.RepeatBehavior="50x"
+                       HorizontalAlignment="Right"
+                       Margin="0,0,50,0"></Image>
+
                 <Button Content="JUGARRR"
                         Style="{StaticResource botonGrande}">
                     
@@ -47,7 +56,20 @@
                     </Button.Triggers>
                 </Button>
             </Grid>
-            <Grid></Grid>
+            <Grid>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource txtTitulo}">The dumb cow</TextBlock>
+                </StackPanel>
+                <TextBlock Style="{StaticResource txtTitulo}"
+                           VerticalAlignment="Center"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"
+                           FontSize="40"
+                           Margin="60,0">
+                    Ayuda a beth a encontrar a tessy usa las flechas para crear un patron que te lleve hasta Tessy <LineBreak/> <LineBreak></LineBreak>
+                        AJUUUAAAAA
+                </TextBlock>
+            </Grid>
         </DockPanel>
         
     </Grid>
