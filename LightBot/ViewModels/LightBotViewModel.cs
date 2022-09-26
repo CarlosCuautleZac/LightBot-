@@ -1,10 +1,12 @@
-﻿using LightBot.Models;
+﻿using GalaSoft.MvvmLight.Command;
+using LightBot.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace LightBot.ViewModels
 {
@@ -13,7 +15,8 @@ namespace LightBot.ViewModels
 
         Juego juego;
 
-        
+        public ICommand NuevoJuegoCommand { get; set; }
+        public ICommand MoverCommand { get; set; }
 
         //
         public string Resultado { get; set; } = "";
@@ -21,8 +24,10 @@ namespace LightBot.ViewModels
         public LightBotViewModel()
         {
             juego = new();
-            NuevoJuego(1);
-            Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
+            //NuevoJuego(1);
+            //Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
+            NuevoJuegoCommand = new RelayCommand<int>(NuevoJuego);
+            MoverCommand = new RelayCommand<string>(Mover);
         }
 
         //Metodo para empezar un nuevo juego
