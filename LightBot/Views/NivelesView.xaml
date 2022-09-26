@@ -40,18 +40,18 @@
                             Margin="0,0,50,0"
                             Height="100"
                             Command="{Binding NuevoJuegoCommand}"
-                            CommandParameter="2">>2</Button>
+                            CommandParameter="2">2</Button>
                     <Button Style="{StaticResource botonControl}"
                             Width="100"
                             Margin="0,0,50,0"
                             Height="100"
                             Command="{Binding NuevoJuegoCommand}"
-                            CommandParameter="3">>3</Button>
+                            CommandParameter="3">3</Button>
                     <Button Style="{StaticResource botonControl}"
                             Width="100"
                             Height="100"
                             Command="{Binding NuevoJuegoCommand}"
-                            CommandParameter="4">>4</Button>
+                            CommandParameter="4">4</Button>
                 </WrapPanel>
             </Grid>
         </DockPanel>

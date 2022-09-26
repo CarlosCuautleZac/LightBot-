@@ -169,18 +169,32 @@
             <DockPanel>
                 <WrapPanel DockPanel.Dock="Top"
                             Orientation="Vertical">
-                    <TextBlock Text="PASOS RESTANTES"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Puntos"
                            Margin="0,10,20,20"
                            Style="{StaticResource textoGrande}"></TextBlock>
-                    <TextBlock Text="VIDAS RESTANTES"
+                        <TextBlock Text="{Binding Juego.Puntos}"
+                                   Style="{StaticResource textoGrande}"
+                                   FontFamily="Arial"
+                                   Margin="0,10,0,20"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </StackPanel>
+                   
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="VIDAS RESTANTES "
                            Margin="0,10,0,20"
                                HorizontalAlignment="Left"
                                Style="{StaticResource textoGrande}">
-                        <TextBlock Text="{Binding .}"
-                           Margin="0,10,0,20"
-                               HorizontalAlignment="Left"
-                               Style="{StaticResource textoGrande}"></TextBlock>
-                    </TextBlock>
+                        </TextBlock>
+                        <TextBlock Text="{Binding Juego.Vidas}"
+                                   Style="{StaticResource textoGrande}"
+                                   FontFamily="Arial"
+                                   Margin="0,10,0,20"
+                                   VerticalAlignment="Center"></TextBlock>
+
+                    </StackPanel>
+
+                    
 
                 </WrapPanel>
     

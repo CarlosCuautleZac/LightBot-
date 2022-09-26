@@ -14,7 +14,14 @@ namespace LightBot.ViewModels
     internal class LightBotViewModel:INotifyPropertyChanged
     {
 
-        Juego juego;
+        private Juego juego;
+
+        public Juego Juego
+        {
+            get { return juego; }
+            set { juego = value; Actualizar("Juego"); }
+        }
+
 
         public ICommand NuevoJuegoCommand { get; set; }
         public ICommand MoverCommand { get; set; }
@@ -29,12 +36,13 @@ namespace LightBot.ViewModels
         //Constructor//
         public LightBotViewModel()
         {
-            juego = new();
+            Juego = new();
             //NuevoJuego(1);
             //Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
             NuevoJuegoCommand = new RelayCommand<string>(NuevoJuego);
             MoverCommand = new RelayCommand(Mover);
             ConcatenarMovimientosCommand = new RelayCommand<string>(ConcatenarMovimientos);
+            Actualizar("");
             //ConcatenarMovimientos("Arriba");
             //ConcatenarMovimientos("abajo");
             //ConcatenarMovimientos("izquierda");
@@ -45,7 +53,7 @@ namespace LightBot.ViewModels
         {
             movimiento = movimiento.ToUpper();
             TotalMovimientos += movimiento +"," ;
-            Actualizar();
+            Actualizar("");
         }
 
         //Metodo para empezar un nuevo juego
@@ -53,20 +61,22 @@ namespace LightBot.ViewModels
         {
             int nivelajugar = int.Parse(nivel);
 
-            juego = new();
-            juego.Vidas = 2;
-            juego.Puntos = 0;
-            juego.Movimientos = 5;
+            Juego = new();
+            Juego.Vidas = 2;
+            Juego.Puntos = 0;
+            Juego.Movimientos = 5;
 
             if (nivelajugar == 1)
             {
-                juego.Posicion = new char[2];
-                juego.Posicion[0] = '1';
-                juego.Posicion[1] = 'C';
+                Juego.Posicion = new char[2];
+                Juego.Posicion[0] = '1';
+                Juego.Posicion[1] = 'C';
                 JugandoView jugandoView = new() { DataContext = this };
                 jugandoView.ShowDialog();
                 
             }
+
+            Actualizar("");
         }
 
 
@@ -88,34 +98,34 @@ namespace LightBot.ViewModels
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
                     //Aqui vemos si es izquierda o derecha y separamos todo
-                    if (instrucciones[i] == "IZQUIERDA" && juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && juego.Posicion[1] != 'G')
+                    if (instrucciones[i] == "IZQUIERDA" && Juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && Juego.Posicion[1] != 'G')
                     {
                         if (instrucciones[i] == "IZQUIERDA")
                         {
-                            juego.Posicion[1] = (char)(juego.Posicion[1] + 1);
-                            juego.Movimientos -= 1;
+                            Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
+                            Juego.Movimientos -= 1;
                         }
                         else
                         {
-                            juego.Posicion[1] = (char)(juego.Posicion[1] - 1);
-                            juego.Movimientos -= 1;
+                            Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
+                            Juego.Movimientos -= 1;
                         }
                     }
                     else
                     {
                         //Aqui vemos si es arriba o abajo y separamos todo
-                        if (instrucciones[i] == "ARRIBA" && juego.Posicion[0] != '0' || instrucciones[i] == "ABAJO" && juego.Posicion[0] != '7')
+                        if (instrucciones[i] == "ARRIBA" && Juego.Posicion[0] != '0' || instrucciones[i] == "ABAJO" && Juego.Posicion[0] != '7')
                         {
                             if (instrucciones[i] == "ARRIBA")
                             {
-                                juego.Posicion[0] = (char)(juego.Posicion[0] + 1);
-                                juego.Movimientos -= 1;
+                                Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
+                                Juego.Movimientos -= 1;
 
                             }
                             else
                             {
-                                juego.Posicion[0] = (char)(juego.Posicion[0] - 1);
-                                juego.Movimientos -= 1;
+                                Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
+                                Juego.Movimientos -= 1;
                             }
                         }
                             
@@ -125,7 +135,7 @@ namespace LightBot.ViewModels
                     //Si ya no quedan movimientos game over si no llegaste o si estas en la meta win
                     //VerificarMovimientos(juego.TotalMovimientos);
 
-                    Actualizar();
+                    Actualizar("");
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
                     await Task.Delay(3000);
                     
@@ -134,15 +144,14 @@ namespace LightBot.ViewModels
                 
                 VerificarIntento();
                 Actualizar();
-
             }
         }
 
         private void VerificarIntento()
         {
-            if (juego.Vidas >0)
+            if (Juego.Vidas >0)
             {
-                if (juego.Posicion[0] == '4' && juego.Posicion[1] == 'C')
+                if (juego.Posicion[0] == '2' && juego.Posicion[1] == 'D')
                 {
                     Resultado = "¡Felicidades, superaste el primer nivel!";
                 }
@@ -150,7 +159,7 @@ namespace LightBot.ViewModels
                 else
                 {
                     Resultado = "¡sigamos buscando a la vaquita!";
-                    juego.Vidas -= 1;
+                    Juego.Vidas -= 1;
                 }
 
             }
@@ -191,9 +200,9 @@ namespace LightBot.ViewModels
         }
 
         
-        public void Actualizar()
+        public void Actualizar(string nombre ="")
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(""));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
