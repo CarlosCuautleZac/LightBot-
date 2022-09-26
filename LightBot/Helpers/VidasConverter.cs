@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using LightBot.ViewModels;
 
 namespace LightBot.Helpers
 {
@@ -12,6 +13,13 @@ namespace LightBot.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            //if (value == )
+            //{
+
+            //}
+
+
+
             throw new NotImplementedException();
         }
 
