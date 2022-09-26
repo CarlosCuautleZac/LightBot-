@@ -18,9 +18,17 @@ namespace LightBot.Helpers
             {
                 return "&#x2764; &#x2764;";
             }
-            if (value.ToString() == "2")
+            if (value.ToString() == "1")
             {
                 return "&#x2764; &#x274C;";
+            }
+            if (value.ToString() == "0")
+            {
+                return "&#x274C; &#x274C;";
+            }
+            else if (value.ToString() == "0")
+            {
+                return "&#x274C; &#x274C;";
             }
 
 
