@@ -203,7 +203,7 @@
                         BorderBrush="#E14D2A"
                         Width="500">
                     <TextBlock Style="{StaticResource txtFlechas}"
-                               Text="{Binding TotalMovimientosno}">
+                               Text="{Binding TotalMovimientos}">
                     </TextBlock>
                 </Border>
             </DockPanel>

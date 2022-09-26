@@ -53,7 +53,7 @@ namespace LightBot.ViewModels
         {
             movimiento = movimiento.ToUpper();
             TotalMovimientos += movimiento +"," ;
-            Actualizar("");
+            Actualizar("TotalMovimientos");
         }
 
         //Metodo para empezar un nuevo juego
