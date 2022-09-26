@@ -31,7 +31,7 @@ namespace LightBot.ViewModels
             juego = new();
             //NuevoJuego(1);
             //Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
-            NuevoJuegoCommand = new RelayCommand<int>(NuevoJuego);
+            NuevoJuegoCommand = new RelayCommand<string>(NuevoJuego);
             MoverCommand = new RelayCommand(Mover);
             ConcatenarMovimientosCommand = new RelayCommand<string>(ConcatenarMovimientos);
             //ConcatenarMovimientos("Arriba");
@@ -47,14 +47,16 @@ namespace LightBot.ViewModels
         }
 
         //Metodo para empezar un nuevo juego
-        public void NuevoJuego(int nivel)
+        public void NuevoJuego(string nivel)
         {
+            int nivelajugar = int.Parse(nivel);
+
             juego = new();
             juego.Vidas = 2;
             juego.Puntos = 0;
             juego.Movimientos = 5;
 
-            if (nivel == 1)
+            if (nivelajugar == 1)
             {
                 juego.Posicion = new char[2];
                 juego.Posicion[0] = '1';
