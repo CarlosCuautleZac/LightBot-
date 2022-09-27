@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace LightBot.ViewModels
@@ -34,10 +35,15 @@ namespace LightBot.ViewModels
         public string TotalMovimientos { get; set; } = "";
 
 
-        string arriba = "↑";
-        string abajo = "↓";
-        string izquierda = "←";
-        string derecha = "→";
+        //string arriba = "↑";
+        //string abajo = "↓";
+        //string izquierda = "←";
+        //string derecha = "→";
+
+        string derecha = "↑";
+        string arriba = "→";
+        string izquierda = "↓";
+        string abajo = "←";
 
         //Constructor//
         public LightBotViewModel()
@@ -69,7 +75,7 @@ namespace LightBot.ViewModels
 
             Juego = new();
             Juego.Vidas = 2;
-            Juego.Puntos = 0;
+            Juego.Puntos = 5000;
             Juego.Movimientos = 5;
 
             if (nivelajugar == 1)
@@ -107,12 +113,13 @@ namespace LightBot.ViewModels
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
                     //Aqui vemos si es izquierda o derecha y separamos todo
-                    if (instrucciones[i] == "←" && Juego.Posicion[1]!='A' || instrucciones[i] == "→" && Juego.Posicion[1] != 'G')
+                    if (instrucciones[i] == izquierda && Juego.Posicion[1]!='A' || instrucciones[i] == derecha && Juego.Posicion[1] != 'G')
                     {
-                        if (instrucciones[i] == "←")
+                        if (instrucciones[i] == izquierda)
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
                             Juego.Movimientos -= 1;
+                            
                             Actualizar("Juego");
                         }
                         else
@@ -121,13 +128,15 @@ namespace LightBot.ViewModels
                             Juego.Movimientos -= 1;
                             Actualizar("Juego");
                         }
+
+                        juego.Puntos -= 500;
                     }
                     else
                     {
                         //Aqui vemos si es arriba o abajo y separamos todo
-                        if (instrucciones[i] == "↑" && Juego.Posicion[0] != '0' || instrucciones[i] == "↓" && Juego.Posicion[0] != '7')
+                        if (instrucciones[i] == arriba && Juego.Posicion[0] != '0' || instrucciones[i] == abajo && Juego.Posicion[0] != '7')
                         {
-                            if (instrucciones[i] == "↑")
+                            if (instrucciones[i] == arriba)
                             {
                                 Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
                                 Juego.Movimientos -= 1;
@@ -139,6 +148,8 @@ namespace LightBot.ViewModels
                                 Juego.Movimientos -= 1;
                                 Actualizar("Juego");
                             }
+
+                            juego.Puntos -= 500;
                         }
 
                         Actualizar("Juego");
@@ -151,7 +162,7 @@ namespace LightBot.ViewModels
 
                     Actualizar("");
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
-                    await Task.Delay(3000);
+                    await Task.Delay(1000);
                     
                 }
 
@@ -163,25 +174,47 @@ namespace LightBot.ViewModels
 
         private void VerificarIntento()
         {
-            if (Juego.Vidas >0)
+            if (Juego.Vidas >1)
             {
-                if (juego.Posicion[0] == '2' && juego.Posicion[1] == 'D')
+                if (juego.Posicion[0] == 'C' && juego.Posicion[1] == '2')
                 {
-                    Resultado = "¡Felicidades, superaste el primer nivel!";
+                   
+                    FinDeJuego(true);
                 }
 
                 else
                 {
                     Resultado = "¡sigamos buscando a la vaquita!";
                     Juego.Vidas -= 1;
+                    TotalMovimientos = "";
+                    Actualizar("");
+                    
                 }
 
             }
             else
             {
-                throw new ArgumentException("Perdiste, Fin del Juego");
+                
+                FinDeJuego(false);
             }
 
+        }
+
+        private void FinDeJuego(bool ganojuego)
+        {
+            TotalMovimientos = "";
+            if (ganojuego)
+            {
+                Resultado = "¡Felicidades, superaste el primer nivel!";
+
+                MessageBox.Show("Ganaste");
+            }
+            else
+            {
+                Resultado = "Perdiste, Fin del Juego";
+            }
+
+            Actualizar("");
         }
 
         private void VerificarMovimientos(int movimientos)
