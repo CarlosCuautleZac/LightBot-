@@ -86,7 +86,10 @@ namespace LightBot.ViewModels
         public async void Mover()
         {
             if(TotalMovimientos!="")
+            {
                 TotalMovimientos = TotalMovimientos.Remove(TotalMovimientos.Length - 1, 1);
+                Actualizar("TotalMovimientos");
+            }
             //Validamos los movimientos
             if (ValidarMovimientos(TotalMovimientos))
             {
@@ -98,9 +101,9 @@ namespace LightBot.ViewModels
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
                     //Aqui vemos si es izquierda o derecha y separamos todo
-                    if (instrucciones[i] == "IZQUIERDA" && Juego.Posicion[1]!='A' || instrucciones[i] == "DERECHA" && Juego.Posicion[1] != 'G')
+                    if (instrucciones[i] == "&#8592;" && Juego.Posicion[1]!='A' || instrucciones[i] == "&#8595;" && Juego.Posicion[1] != 'G')
                     {
-                        if (instrucciones[i] == "IZQUIERDA")
+                        if (instrucciones[i] == "&#8592;")
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
                             Juego.Movimientos -= 1;
@@ -114,9 +117,9 @@ namespace LightBot.ViewModels
                     else
                     {
                         //Aqui vemos si es arriba o abajo y separamos todo
-                        if (instrucciones[i] == "ARRIBA" && Juego.Posicion[0] != '0' || instrucciones[i] == "ABAJO" && Juego.Posicion[0] != '7')
+                        if (instrucciones[i] == "&#8593;" && Juego.Posicion[0] != '0' || instrucciones[i] == "&#8594;" && Juego.Posicion[0] != '7')
                         {
-                            if (instrucciones[i] == "ARRIBA")
+                            if (instrucciones[i] == "&#8593;")
                             {
                                 Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
                                 Juego.Movimientos -= 1;
@@ -188,8 +191,8 @@ namespace LightBot.ViewModels
             {
                     for (int x = 0; x < instrucciones.Length; x++)
                     {
-                    if (instrucciones[x] == "IZQUIERDA" || instrucciones[x] == "DERECHA"
-                        || instrucciones[x] == "ARRIBA" || instrucciones[x] == "ABAJO")
+                    if (instrucciones[x] == "&#8592;" || instrucciones[x] == "&#8595;"
+                        || instrucciones[x] == "&#8593;" || instrucciones[x] == "&#8594;")
                         continue;
                     else
                         return false;

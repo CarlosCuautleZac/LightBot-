@@ -227,24 +227,24 @@
                         Grid.Row="1"
                         Style="{StaticResource botonControl}"
                         Command="{Binding ConcatenarMovimientosCommand}"
-                        CommandParameter="Izquierda">&#8592;
+                        CommandParameter="&#8592;">&#8592;
                 </Button>
                 <Button Grid.Column="1"
                         Style="{StaticResource botonControl}"
                         Command="{Binding ConcatenarMovimientosCommand}"
-                        CommandParameter="Arriba">&#8593;
+                        CommandParameter="&#8593;">&#8593;
                 </Button>
                 <Button Grid.Column="2"
                         Grid.Row="1"
                         Style="{StaticResource botonControl}"
                         Command="{Binding ConcatenarMovimientosCommand}"
-                        CommandParameter="Abajo">&#8594;
+                        CommandParameter="&#8594;">&#8594;
                 </Button>
                 <Button Grid.Column="1"
                         Grid.Row="2"
                         Style="{StaticResource botonControl}"
                         Command="{Binding ConcatenarMovimientosCommand}"
-                        CommandParameter="Derecha">&#8595;
+                        CommandParameter="&#8595;">&#8595;
                 </Button>
                 <Button Grid.Column="1"
                         Grid.Row="1"
