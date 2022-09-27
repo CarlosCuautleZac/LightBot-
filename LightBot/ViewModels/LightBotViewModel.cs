@@ -33,6 +33,12 @@ namespace LightBot.ViewModels
 
         public string TotalMovimientos { get; set; } = "";
 
+
+        string arriba = "↑";
+        string abajo = "↓";
+        string izquierda = "←";
+        string derecha = "→";
+
         //Constructor//
         public LightBotViewModel()
         {
@@ -69,8 +75,8 @@ namespace LightBot.ViewModels
             if (nivelajugar == 1)
             {
                 Juego.Posicion = new char[2];
-                Juego.Posicion[0] = '1';
-                Juego.Posicion[1] = 'C';
+                Juego.Posicion[0] = 'C';
+                Juego.Posicion[1] = '5';
                 JugandoView jugandoView = new() { DataContext = this };
                 jugandoView.ShowDialog();
                 
@@ -101,37 +107,42 @@ namespace LightBot.ViewModels
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
                     //Aqui vemos si es izquierda o derecha y separamos todo
-                    if (instrucciones[i] == "&#8592;" && Juego.Posicion[1]!='A' || instrucciones[i] == "&#8595;" && Juego.Posicion[1] != 'G')
+                    if (instrucciones[i] == "←" && Juego.Posicion[1]!='A' || instrucciones[i] == "→" && Juego.Posicion[1] != 'G')
                     {
-                        if (instrucciones[i] == "&#8592;")
+                        if (instrucciones[i] == "←")
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
                             Juego.Movimientos -= 1;
+                            Actualizar("Juego");
                         }
                         else
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
                             Juego.Movimientos -= 1;
+                            Actualizar("Juego");
                         }
                     }
                     else
                     {
                         //Aqui vemos si es arriba o abajo y separamos todo
-                        if (instrucciones[i] == "&#8593;" && Juego.Posicion[0] != '0' || instrucciones[i] == "&#8594;" && Juego.Posicion[0] != '7')
+                        if (instrucciones[i] == "↑" && Juego.Posicion[0] != '0' || instrucciones[i] == "↓" && Juego.Posicion[0] != '7')
                         {
-                            if (instrucciones[i] == "&#8593;")
+                            if (instrucciones[i] == "↑")
                             {
                                 Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
                                 Juego.Movimientos -= 1;
-
+                                Actualizar("Juego");
                             }
                             else
                             {
                                 Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
                                 Juego.Movimientos -= 1;
+                                Actualizar("Juego");
                             }
                         }
-                            
+
+                        Actualizar("Juego");
+
                     }
 
 
@@ -185,14 +196,16 @@ namespace LightBot.ViewModels
         private bool ValidarMovimientos(string movimientos)
         {
             var instrucciones = movimientos.Split(',');
+            
+
             if (instrucciones.Length > 5)
                 return false;
             else
             {
                     for (int x = 0; x < instrucciones.Length; x++)
                     {
-                    if (instrucciones[x] == "&#8592;" || instrucciones[x] == "&#8595;"
-                        || instrucciones[x] == "&#8593;" || instrucciones[x] == "&#8594;")
+                    if (instrucciones[x] == arriba || instrucciones[x] == abajo 
+                        || instrucciones[x] == izquierda || instrucciones[x] == derecha)
                         continue;
                     else
                         return false;

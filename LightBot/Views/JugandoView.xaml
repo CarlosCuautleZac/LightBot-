@@ -4,11 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot.Views"
+        
         xmlns:vm="clr-namespace:LightBot.ViewModels"
         xmlns:convertidor="clr-namespace:LightBot.Helpers"
 
         mc:Ignorable="d"
       Title="Encuentra a Bessy" MinHeight="790" MinWidth="1300">
+
+    <Window.Resources>
+        <convertidor:PosicionVaqueraConverter x:Key="PV"></convertidor:PosicionVaqueraConverter>
+        <convertidor:PosicionHorizontalVaqueraConverter x:Key="PH"></convertidor:PosicionHorizontalVaqueraConverter>
+    </Window.Resources>
     <Window.DataContext>
         <vm:LightBotViewModel></vm:LightBotViewModel>
     </Window.DataContext>
@@ -152,8 +158,8 @@
                 <Image Source="/Assets/cowGirl.png"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       Grid.Column="2"
-                       Grid.Row="4"></Image>
+                       Grid.Column="{Binding Path=Juego.Posicion[0],Converter={StaticResource PH}}"
+                       Grid.Row="{Binding Path=Juego.Posicion[1],Converter={StaticResource PV}}"></Image>
 
 
             </Grid>

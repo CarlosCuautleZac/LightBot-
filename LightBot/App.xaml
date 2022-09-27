@@ -71,7 +71,7 @@
         
         <Style TargetType="TextBlock" x:Key="txtFlechas">
             <Setter Property="Foreground" Value="White"></Setter>
-            <Setter Property="FontSize" Value="60"></Setter>
+            <Setter Property="FontSize" Value="45"></Setter>
             <Setter Property="FontFamily" Value="Arial Black"></Setter>
             <Setter Property="FontWeight" Value="Normal"></Setter>
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
