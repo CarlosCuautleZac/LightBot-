@@ -14,6 +14,7 @@
     <Window.Resources>
         <convertidor:PosicionVaqueraConverter x:Key="PV"></convertidor:PosicionVaqueraConverter>
         <convertidor:PosicionHorizontalVaqueraConverter x:Key="PH"></convertidor:PosicionHorizontalVaqueraConverter>
+        <convertidor:EnMovimientoADisabledConverter x:Key="EnabledConverter"></convertidor:EnMovimientoADisabledConverter>
     </Window.Resources>
     <Window.DataContext>
         <vm:LightBotViewModel></vm:LightBotViewModel>
@@ -217,6 +218,7 @@
             <Grid Grid.Row="1"
                   Margin="15"
                   Width="400"
+                  IsEnabled="{Binding EnMovimiento}"
                   Height="400">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
