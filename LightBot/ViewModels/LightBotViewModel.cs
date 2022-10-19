@@ -95,40 +95,48 @@ namespace LightBot.ViewModels
         public async void Mover()
         {
             EnMovimiento = false;
-            
-
             if (TotalMovimientos != "")
             {
                 TotalMovimientos = TotalMovimientos.Remove(TotalMovimientos.Length - 1, 1);
                 Actualizar("TotalMovimientos");
             }
-
             //Validamos los movimientos
             if (ValidarMovimientos(TotalMovimientos))
             {
                 //Separamos las instrucciones
                 var instrucciones = TotalMovimientos.Split(',');
-
                 //Obtenemos la pieza actual
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
                     //Aqui vemos si es izquierda o derecha y separamos todo, ademas limitamos la movilidad
                     if (instrucciones[i] == izquierda && Juego.Posicion[1] != 'A' || instrucciones[i] == derecha && Juego.Posicion[1] != 'G')
                     {
-                        //Izquierda
+                        //Izquierda(Abajo)
                         if (instrucciones[i] == izquierda)
                         {
-                            Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
-                            Juego.Movimientos -= 1;
-
-                            Actualizar("Juego");
+                            if (Juego.Posicion[1]=='5')
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
+                                Juego.Movimientos -= 1;
+                            }
+                            
                         }
-                        //Derecha
-                        else
+                        //Derecha(Arriba)
+                        if (instrucciones[i]== derecha)
                         {
-                            Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
-                            Juego.Movimientos -= 1;
-                            Actualizar("Juego");
+                            if (Juego.Posicion[1]=='1')
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
+                                Juego.Movimientos -= 1;
+                            }
                         }
                         //Quitamos Puntos
                         juego.Puntos -= 500;
@@ -138,24 +146,35 @@ namespace LightBot.ViewModels
                         //Aqui vemos si es arriba o abajo y separamos todo, ademas limitamos la movilidad
                         if (instrucciones[i] == arriba && Juego.Posicion[0] != '0' || instrucciones[i] == abajo && Juego.Posicion[0] != '7')
                         {
-                            //Arriba
+                            //Arriba(Derecha)
                             if (instrucciones[i] == arriba)
                             {
-                                Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
-                                Juego.Movimientos -= 1;
-                                Actualizar("Juego");
+                                if (Juego.Posicion[0]=='E')
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
+                                    Juego.Movimientos -= 1;
+                                }
                             }
-                            //Abajo
-                            else
+                            //Abajo (Izquierda)
+                            if (instrucciones[i]==abajo)
                             {
-                                Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
-                                Juego.Movimientos -= 1;
-                                Actualizar("Juego");
+                                if (Juego.Posicion[0]=='A')
+                                {
+                                    break;
+                                }
+                                else
+                                {
+                                    Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
+                                    Juego.Movimientos -= 1;
+                                }
                             }
                             //Quitamos Puntos
                             juego.Puntos -= 500;
                         }
-
                         Actualizar("Juego");
                     }
                     //Si ya no quedan movimientos game over si no llegaste o si estas en la meta win
@@ -164,21 +183,18 @@ namespace LightBot.ViewModels
                     Actualizar("");
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
                     await Task.Delay(1000);
-
                 }
                 //Reiniciamos el contador despues de todos los movimientos
                 juego.Movimientos = 5;
                 VerificarIntento();
                 Actualizar();
             }
-
             else
             {
                 MessageBox.Show("Solo puedes tener 5 movimientos");
                 TotalMovimientos = "";
                 Actualizar();
             }
-
             EnMovimiento = true;
             Actualizar();
         }
@@ -188,13 +204,10 @@ namespace LightBot.ViewModels
             if (Juego.Vidas >=1)
             {
                 juego.Vidas -= 1;
-
-
                 if (juego.Posicion[0] == 'C' && juego.Posicion[1] == '2')
                 {
                     FinDeJuego(true);
                 }
-
                 else if (juego.Vidas == 0)
                     FinDeJuego(false);
                 else
@@ -239,13 +252,11 @@ namespace LightBot.ViewModels
             {
                 throw new ArgumentException("Felicidades, C");
             }
-
         }
 
         private bool ValidarMovimientos(string movimientos)
         {
             var instrucciones = movimientos.Split(',');
-
             if (instrucciones.Length > 5)
                 return false;
             else
@@ -258,7 +269,6 @@ namespace LightBot.ViewModels
                     else
                         return false;
                 }
-
                 return true;
             }
         }
@@ -266,7 +276,6 @@ namespace LightBot.ViewModels
 
         public void Actualizar(string nombre = "")
         {
-
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nombre));
         }
 
