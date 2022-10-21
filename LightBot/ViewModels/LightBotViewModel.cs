@@ -25,11 +25,15 @@ namespace LightBot.ViewModels
         public ICommand NuevoJuegoCommand { get; set; }
         public ICommand MoverCommand { get; set; }
         public ICommand ConcatenarMovimientosCommand { get; set; }
+        public ICommand VerNivelesCommand { get; set; }
+
         //Propiedades Utilizadas
         public string Resultado { get; set; } = "";
         public string TotalMovimientos { get; set; } = "";
 
         public bool EnMovimiento { get; set; } = true;
+
+        public string Vista { get; set; } = "Inicio";
 
         //string arriba = "↑";
         //string abajo = "↓";
@@ -42,22 +46,26 @@ namespace LightBot.ViewModels
         string izquierda = "↓";
         string abajo = "←";
 
-        JugandoView jugandoView;
+        //JugandoView jugandoView;
         //Constructor//
         public LightBotViewModel()
         {
             //Instanciacion de nuevo Juego
             Juego = new();
-            //NuevoJuego(1);
-            //Mover("ARRIBA,ABAJO,IZQUIERDA,DERECHA,ABAJO");
+
+            //Comandos
             NuevoJuegoCommand = new RelayCommand<string>(NuevoJuego);
             MoverCommand = new RelayCommand(Mover);
             ConcatenarMovimientosCommand = new RelayCommand<string>(ConcatenarMovimientos);
+            VerNivelesCommand = new RelayCommand(VerNiveles);
+
             Actualizar("");
-            //ConcatenarMovimientos("Arriba");
-            //ConcatenarMovimientos("abajo");
-            //ConcatenarMovimientos("izquierda");
-            //Mover();
+        }
+
+        private void VerNiveles()
+        {
+            Vista = "VerNiveles";
+            Actualizar();
         }
 
         private void ConcatenarMovimientos(string movimiento)
@@ -84,8 +92,9 @@ namespace LightBot.ViewModels
                 Juego.Posicion = new char[2];
                 Juego.Posicion[0] = 'C';
                 Juego.Posicion[1] = '5';
-                jugandoView = new() { DataContext = this };
-                jugandoView.ShowDialog();
+                Vista = "Juego";
+                //jugandoView = new() { DataContext = this };
+                //jugandoView.ShowDialog();
             }
             Actualizar("");
         }
@@ -229,17 +238,15 @@ namespace LightBot.ViewModels
             if (ganojuego)
             {
                 Resultado = "¡Felicidades, superaste el primer nivel!";
-                MessageBox.Show("Ganaste");
-                if (jugandoView != null)
-                    jugandoView.Close();
-                NuevoJuego("1");
+                Vista = "Mensaje";
+                //if (jugandoView != null)
+                //    jugandoView.Close();               
             }
             else
             {
                 Resultado = "Perdiste, Fin del Juego";
-                MessageBox.Show("Perdiste");
-                jugandoView.Close();
-                NuevoJuego("1");
+                Vista = "Mensaje";
+                //jugandoView.Close();
             }
 
             EnMovimiento = true;

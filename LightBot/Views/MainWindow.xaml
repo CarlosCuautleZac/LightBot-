@@ -3,14 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:vm="clr-namespace:LightBot.ViewModels"
+        xmlns:vistas="clr-namespace:LightBot.Views"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot"
         mc:Ignorable="d"
-        Title="Light Bot" Height="790" Width="1300">
+        Title="Light Bot" Height="810" Width="1350">
+    <Window.Resources>
+        <vistas:MensajeView x:Key="MensajeView"></vistas:MensajeView>
+        <vistas:JugandoView x:Key="VentanaJuego"></vistas:JugandoView>
+        <vistas:LightBotView x:Key="VentanaPrincipal"></vistas:LightBotView>
+        <vistas:NivelesView x:Key="VentanaNiveles"></vistas:NivelesView>
+        <Style TargetType="ContentControl">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Vista}" Value="Inicio">
+                    <Setter Property="Content" Value="{StaticResource VentanaPrincipal}"></Setter>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Vista}" Value="VerNiveles">
+                    <Setter Property="Content" Value="{StaticResource VentanaNiveles}"></Setter>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding Vista}" Value="Juego">
+                    <Setter Property="Content" Value="{StaticResource VentanaJuego}"></Setter>
+                </DataTrigger>
+                
+                <DataTrigger Binding="{Binding Vista}" Value="Mensaje">
+                    <Setter Property="Content" Value="{StaticResource MensajeView}"></Setter>
+                </DataTrigger>
+
+
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
     <Window.DataContext>
         <vm:LightBotViewModel></vm:LightBotViewModel>
     </Window.DataContext>
-    <Grid>
-
-    </Grid>
+    <ContentControl>
+    </ContentControl>
 </Window>

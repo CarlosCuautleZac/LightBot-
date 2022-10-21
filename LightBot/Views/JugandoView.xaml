@@ -16,9 +16,7 @@
         <convertidor:PosicionHorizontalVaqueraConverter x:Key="PH"></convertidor:PosicionHorizontalVaqueraConverter>
         <convertidor:EnMovimientoADisabledConverter x:Key="EnabledConverter"></convertidor:EnMovimientoADisabledConverter>
     </UserControl.Resources>
-    <UserControl.DataContext>
-        <vm:LightBotViewModel></vm:LightBotViewModel>
-    </UserControl.DataContext>
+
     <UserControl.Background>
         <ImageBrush ImageSource="/Assets/backgroundGame.jpg"></ImageBrush>
     </UserControl.Background>

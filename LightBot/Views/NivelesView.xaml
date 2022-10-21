@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:LightBot.ViewModels"
         xmlns:convertidor="clr-namespace:LightBot.Helpers"
         mc:Ignorable="d"
-        Height="790" Width="1300">
+        MinHeight="790" MinWidth="1300">
     <UserControl.Background>
         <DrawingBrush Stretch="UniformToFill"
                       TileMode="None">
@@ -16,9 +16,6 @@
             </DrawingBrush.Drawing>
         </DrawingBrush>
     </UserControl.Background>
-    <UserControl.DataContext>
-        <vm:LightBotViewModel></vm:LightBotViewModel>
-    </UserControl.DataContext>
     <Grid>
         <DockPanel>
             <Grid DockPanel.Dock="Top">
