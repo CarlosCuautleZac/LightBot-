@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace LightBot.Views
 {
     /// <summary>
-    /// Interaction logic for JugandoView.xaml
+    /// Interaction logic for MensajeView.xaml
     /// </summary>
-    public partial class JugandoView : UserControl
+    public partial class MensajeView : UserControl
     {
-        public JugandoView()
+        public MensajeView()
         {
             InitializeComponent();
         }

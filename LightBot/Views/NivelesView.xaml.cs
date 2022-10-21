@@ -17,7 +17,7 @@ namespace LightBot.Views
     /// <summary>
     /// Interaction logic for NivelesView.xaml
     /// </summary>
-    public partial class NivelesView : Window
+    public partial class NivelesView : UserControl
     {
         public NivelesView()
         {

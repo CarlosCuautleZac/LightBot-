@@ -19,7 +19,7 @@ namespace LightBot.Views
     /// <summary>
     /// Interaction logic for LightBotView.xaml
     /// </summary>
-    public partial class LightBotView : Window
+    public partial class LightBotView : UserControl
     {
         public LightBotView()
         {
