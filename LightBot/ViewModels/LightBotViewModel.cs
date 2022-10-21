@@ -64,7 +64,13 @@ namespace LightBot.ViewModels
 
         private void VerNiveles()
         {
-            Vista = "VerNiveles";
+            if(Resultado == "Solo puedes tener hasta 5 movimientos")
+            {
+                Vista = "Juego";
+            }
+            else
+                Vista = "VerNiveles";
+
             Actualizar();
         }
 
@@ -200,7 +206,8 @@ namespace LightBot.ViewModels
             }
             else
             {
-                MessageBox.Show("Solo puedes tener 5 movimientos");
+                Resultado = "Solo puedes tener hasta 5 movimientos";
+                Vista = "Mensaje";
                 TotalMovimientos = "";
                 Actualizar();
             }
