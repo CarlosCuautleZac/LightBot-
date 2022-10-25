@@ -41,10 +41,10 @@ namespace LightBot.ViewModels
         //string derecha = "→";.
 
         //Movimientos Permitidos
-        string derecha = "↑";
-        string arriba = "→";
-        string izquierda = "↓";
-        string abajo = "←";
+        string derecha = "→";
+        string arriba = "↑";
+        string izquierda = "←";
+        string abajo = "↓";
 
         //JugandoView jugandoView;
         //Constructor//
@@ -123,78 +123,40 @@ namespace LightBot.ViewModels
                 //Obtenemos la pieza actual
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
-                    //Aqui vemos si es izquierda o derecha y separamos todo, ademas limitamos la movilidad
-                    if (instrucciones[i] == izquierda && Juego.Posicion[1] != 'A' || instrucciones[i] == derecha && Juego.Posicion[1] != 'G')
+                    if (instrucciones[i] == izquierda && Juego.Posicion[0] == 'A' || instrucciones[i] == derecha && Juego.Posicion[0] == 'E'
+                      || instrucciones[i] == arriba && Juego.Posicion[1] == '1' || instrucciones[i] == abajo && Juego.Posicion[1] == '5')
                     {
-                        //Izquierda(Abajo)
-                        if (instrucciones[i] == izquierda)
-                        {
-                            if (Juego.Posicion[1]=='5')
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
-                                Juego.Movimientos -= 1;
-                            }
-                            
-                        }
-                        //Derecha(Arriba)
-                        if (instrucciones[i]== derecha)
-                        {
-                            if (Juego.Posicion[1]=='1')
-                            {
-                                break;
-                            }
-                            else
-                            {
-                                Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
-                                Juego.Movimientos -= 1;
-                            }
-                        }
-                        //Quitamos Puntos
-                        juego.Puntos -= 500;
+                        break;
                     }
-                    else
+                    //Izquierda
+                    if (instrucciones[i] == izquierda && Juego.Posicion[1] != 'A')
                     {
-                        //Aqui vemos si es arriba o abajo y separamos todo, ademas limitamos la movilidad
-                        if (instrucciones[i] == arriba && Juego.Posicion[0] != '0' || instrucciones[i] == abajo && Juego.Posicion[0] != '7')
-                        {
-                            //Arriba(Derecha)
-                            if (instrucciones[i] == arriba)
-                            {
-                                if (Juego.Posicion[0]=='E')
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
-                                    Juego.Movimientos -= 1;
-                                }
-                            }
-                            //Abajo (Izquierda)
-                            if (instrucciones[i]==abajo)
-                            {
-                                if (Juego.Posicion[0]=='A')
-                                {
-                                    break;
-                                }
-                                else
-                                {
-                                    Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
-                                    Juego.Movimientos -= 1;
-                                }
-                            }
-                            //Quitamos Puntos
-                            juego.Puntos -= 500;
-                        }
-                        Actualizar("Juego");
+                        Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
+                        Juego.Movimientos -= 1;
                     }
+                    //Derecha
+                    if (instrucciones[i] == derecha && Juego.Posicion[1] != 'E')
+                    {
+                        Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
+                        Juego.Movimientos -= 1;
+                    }
+                    //Arriba
+                    if (instrucciones[i] == arriba && Juego.Posicion[0] != '0')
+                    {
+                        Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
+                        Juego.Movimientos -= 1;
+                    }
+                    //Abajo
+                    if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
+                    {
+                        Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
+                        Juego.Movimientos -= 1;
+                    }
+                    //Quitamos Puntos
+                    juego.Puntos -= 500;
+                    Actualizar("Juego");
                     //Si ya no quedan movimientos game over si no llegaste o si estas en la meta win
                     //VerificarMovimientos(juego.TotalMovimientos);
-
                     Actualizar("");
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
                     await Task.Delay(1000);
@@ -206,8 +168,7 @@ namespace LightBot.ViewModels
             }
             else
             {
-                Resultado = "Solo puedes tener hasta 5 movimientos";
-                Vista = "Mensaje";
+                MessageBox.Show("Solo puedes tener 5 movimientos");
                 TotalMovimientos = "";
                 Actualizar();
             }
