@@ -45,7 +45,7 @@
     <Grid>
           <ContentControl>
     </ContentControl>
-        <Grid>
+        <Grid Visibility="Collapsed">
            
             <Grid.Background>
                 <SolidColorBrush Color="#f4dfba" Opacity=".5"></SolidColorBrush>
