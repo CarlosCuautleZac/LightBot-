@@ -12,6 +12,7 @@
         <vistas:MensajeView x:Key="MensajeView"></vistas:MensajeView>
         <vistas:JugandoView x:Key="VentanaJuego"></vistas:JugandoView>
         <vistas:LightBotView x:Key="VentanaPrincipal"></vistas:LightBotView>
+        <vistas:InstruccionesView x:Key="Instrucciones"></vistas:InstruccionesView>
         <vistas:NivelesView x:Key="VentanaNiveles"></vistas:NivelesView>
         <Style TargetType="ContentControl">
             <Style.Triggers>
@@ -28,6 +29,10 @@
                 
                 <DataTrigger Binding="{Binding Vista}" Value="Mensaje">
                     <Setter Property="Content" Value="{StaticResource MensajeView}"></Setter>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding Vista}" Value="Instrucciones">
+                    <Setter Property="Content" Value="{StaticResource Instrucciones}"></Setter>
                 </DataTrigger>
 
 
