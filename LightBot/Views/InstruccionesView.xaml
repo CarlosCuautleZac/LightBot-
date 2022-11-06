@@ -19,6 +19,7 @@
                Source="{Binding Nivel, Converter={StaticResource NivelASource}}"
                Margin="0 0 0 15"></Image>
         <Button  Background="#CA965C" 
+                 Command="{Binding CambiarVistaAJugarCommand}"
                  Grid.Row="1" 
                  FontFamily="Cooper" 
                  Foreground="white" 

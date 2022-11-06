@@ -24,10 +24,11 @@ namespace LightBot.ViewModels
         //Comandos Utilizados
         public ICommand NuevoJuegoCommand { get; set; }
         public ICommand MoverCommand { get; set; }
-
+        public ICommand CambiarVistaAJugarCommand { get; set; }
         public ICommand MoverNivel2Command { get; set; }
         public ICommand ConcatenarMovimientosCommand { get; set; }
         public ICommand VerNivelesCommand { get; set; }
+        public ICommand MoverDependiendoElNivelCommand { get; set; }
 
 
         //Propiedades Utilizadas
@@ -58,12 +59,32 @@ namespace LightBot.ViewModels
             MoverNivel2Command = new RelayCommand(MovenEnNivel2);
             ConcatenarMovimientosCommand = new RelayCommand<string>(ConcatenarMovimientos);
             VerNivelesCommand = new RelayCommand(VerNiveles);
+            CambiarVistaAJugarCommand = new RelayCommand(CambiarVistaAJugar);
+            MoverDependiendoElNivelCommand = new RelayCommand(MoverDependiendoElNivel);
 
             Actualizar("");
         }
 
+        private void MoverDependiendoElNivel()
+        {
+            switch (Nivel)
+            {
+                case 1: Mover(); break;
+                case 2: MovenEnNivel2(); break;
+                default://Cambiar dependiendo el nivel
+                    MovenEnNivel2();
+                    break;
+            }
+        }
+
+
         #region Metodos en comun de todos los niveles
 
+        private void CambiarVistaAJugar()
+        {
+            Vista = "Juego";
+            Actualizar(nameof(Vista));
+        }
         public void NuevoJuego(string nivel)
         {
             Nivel = int.Parse(nivel);
@@ -71,7 +92,7 @@ namespace LightBot.ViewModels
             //Nivel a Jugar
             int nivelajugar = int.Parse(nivel);
             Juego = new();
-            
+
             Juego.Puntos = 5000;
             Juego.Movimientos = 5;
 
@@ -82,7 +103,8 @@ namespace LightBot.ViewModels
                 Juego.Posicion = new char[2];
                 Juego.Posicion[0] = 'C';
                 Juego.Posicion[1] = '5';
-                Vista = "Juego";
+                //Vista = "Juego";
+                Vista = "Instrucciones";
                 //jugandoView = new() { DataContext = this };
                 //jugandoView.ShowDialog();
             }
@@ -93,7 +115,8 @@ namespace LightBot.ViewModels
                 Juego.Posicion = new char[2];
                 Juego.Posicion[0] = 'C';
                 Juego.Posicion[1] = '5';
-                Vista = "Juego2";
+                Vista = "Instrucciones";
+                //Vista = "Juego2";
                 //jugandoView = new() { DataContext = this };
                 //jugandoView.ShowDialog();
             }
@@ -114,6 +137,11 @@ namespace LightBot.ViewModels
             {
                 Vista = "Juego";
             }
+            else if (Resultado == "¡Felicidades, superaste el primer nivel!")
+            {
+                NuevoJuego("2");
+
+            }
             else
                 Vista = "VerNiveles";
 
@@ -128,7 +156,8 @@ namespace LightBot.ViewModels
                 Resultado = "¡Felicidades, superaste el primer nivel!";
                 Vista = "Mensaje";
                 //if (jugandoView != null)
-                //    jugandoView.Close();               
+                //    jugandoView.Close();
+                Actualizar();
             }
             else
             {
@@ -208,7 +237,7 @@ namespace LightBot.ViewModels
                         Juego.Movimientos -= 1;
                     }
 
-                    
+
                     //Ver si la monita se movio a un cactus para que pierda una vida
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A')
                     {
@@ -414,10 +443,10 @@ namespace LightBot.ViewModels
             EnMovimiento = true;
             Actualizar();
         }
-     
+
         private void VerificarIntento()
         {
-            if (Juego.Vidas >=1)
+            if (Juego.Vidas >= 1)
             {
                 juego.Vidas -= 1;
                 if (juego.Posicion[0] == 'C' && juego.Posicion[1] == '2')

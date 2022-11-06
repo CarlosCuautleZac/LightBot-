@@ -280,7 +280,7 @@
                 <Button Grid.Column="1"
                         Grid.Row="1"
                         Style="{StaticResource botonControl}"
-                        Command="{Binding MoverCommand}">&#9673;</Button>
+                        Command="{Binding MoverDependiendoElNivelCommand}">&#9673;</Button>
 
             </Grid>
 
