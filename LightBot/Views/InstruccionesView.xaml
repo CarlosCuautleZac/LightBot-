@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="LightBot.Views.InstruccionesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LightBot.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Margin="65">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.RowSpan="2"
+               Source="../Assets/Instrucciones1.png"
+               Margin="0 0 0 15"></Image>
+        <Button  Background="#CA965C" 
+                 Grid.Row="1" 
+                 FontFamily="Cooper" 
+                 Foreground="white" 
+                 FontSize="18"
+                 Width="180"
+                 Height="45"
+                 Content="A BUSCAR!!"></Button>
+
+    </Grid>
+</UserControl>

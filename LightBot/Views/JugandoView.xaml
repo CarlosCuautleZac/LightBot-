@@ -152,13 +152,38 @@
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Grid.Column="2"
-                       Grid.Row="1"></Image>
+                       Grid.Row="1"
+                       RenderTransformOrigin=".5,.5">
+                    <Image.RenderTransform>
+                        <RotateTransform x:Name="vaca"></RotateTransform>
+                    </Image.RenderTransform>
+                    <Image.Triggers>
+                        <EventTrigger RoutedEvent="Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation BeginTime="0:0:0"
+                                                 Duration="0:0:0.1"
+                                                 From="-10"
+                                                 To="10"
+                                                 Storyboard.TargetName="vaca"
+                                                 Storyboard.TargetProperty="Angle"
+                                                 RepeatBehavior="Forever"
+                                                 AutoReverse="True"></DoubleAnimation>
+                                    
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Image.Triggers>
+                </Image>
 
                 <Image Source="/Assets/cowGirl.png"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Grid.Column="{Binding Path=Juego.Posicion[0],Converter={StaticResource PH}}"
-                       Grid.Row="{Binding Path=Juego.Posicion[1],Converter={StaticResource PV}}"></Image>
+                       Grid.Row="{Binding Path=Juego.Posicion[1],Converter={StaticResource PV}}">
+                    
+               
+                </Image>
 
 
             </Grid>

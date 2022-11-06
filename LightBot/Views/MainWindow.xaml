@@ -37,6 +37,39 @@
     <Window.DataContext>
         <vm:LightBotViewModel></vm:LightBotViewModel>
     </Window.DataContext>
-    <ContentControl>
+    <Grid>
+          <ContentControl>
     </ContentControl>
+        <Grid>
+           
+            <Grid.Background>
+                <SolidColorBrush Color="#f4dfba" Opacity=".5"></SolidColorBrush>
+            </Grid.Background>
+            <Border Background="#F4DFBA" Height="200" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="15">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="20" Direction="0" ShadowDepth="0" Color="#876445"></DropShadowEffect>
+                </Border.Effect>
+                <DockPanel >
+                    <Border Background="#876445" Height="100" DockPanel.Dock="Top" CornerRadius="15 15 0 0">
+                        <TextBlock FontFamily="Cooper" Foreground="#f4dfba" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextAlignment="Center" TextWrapping="Wrap" Margin="10" Text="{Binding Resultado}"></TextBlock>
+                    </Border>
+                    <WrapPanel HorizontalAlignment="Center"
+                           VerticalAlignment="Center">
+                        <WrapPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                                <Setter Property="Height" Value="45"></Setter>
+                                <Setter Property="Width" Value="110"></Setter>
+
+                            </Style>
+                        </WrapPanel.Resources>
+                        <Button  Background="#CA965C" Command="{Binding VerNivelesCommand}" FontFamily="Cooper" Foreground="white" FontSize="16">Aceptar</Button>
+
+                    </WrapPanel>
+                </DockPanel>
+
+            </Border>
+        </Grid>
+    </Grid>
+  
 </Window>
