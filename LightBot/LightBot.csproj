@@ -11,6 +11,7 @@
   <ItemGroup>
     <None Remove="Assets\backgroundGame.jpg" />
     <None Remove="Assets\cactus.png" />
+    <None Remove="Assets\cowGirlGolpeada.png" />
     <None Remove="Assets\fondo.jpg" />
     <None Remove="Assets\fondoNiveles.png" />
     <None Remove="Assets\Fonts\cowGirl.png" />
@@ -30,6 +31,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\cowGirl.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\cowGirlGolpeada.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\fondoNiveles.png">

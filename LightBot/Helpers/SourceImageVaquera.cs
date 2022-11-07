@@ -8,13 +8,20 @@ using System.Windows.Data;
 
 namespace LightBot.Helpers
 {
-    internal class PosicionVaquitaConverter : IValueConverter
+    internal class SourceImageVaquera : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int nivel = (int)value;
-
-            throw new NotImplementedException();
+            string ruta = "";
+            if (value is bool == true)
+            {
+                ruta = "/Assets/cowGirlGolpeada.png";
+            }
+            else if (value is byte == false)
+            {
+                ruta = "/Assets/cowGirl.png";
+            }
+            return ruta;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

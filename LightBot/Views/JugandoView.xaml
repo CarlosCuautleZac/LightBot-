@@ -15,6 +15,7 @@
         <convertidor:PosicionVaqueraConverter x:Key="PV"></convertidor:PosicionVaqueraConverter>
         <convertidor:PosicionHorizontalVaqueraConverter x:Key="PH"></convertidor:PosicionHorizontalVaqueraConverter>
         <convertidor:EnMovimientoADisabledConverter x:Key="EnabledConverter"></convertidor:EnMovimientoADisabledConverter>
+        <convertidor:SourceImageVaquera x:Key="SourceVaquera"></convertidor:SourceImageVaquera>
     </UserControl.Resources>
 
     <UserControl.Background>
@@ -347,42 +348,11 @@
                 
                 <!--VAQUERITAAAAAAAA-->
 
-                <Image Source="/Assets/cowGirl.png"
+                <Image Source="{Binding Daño, Converter={StaticResource SourceVaquera}}"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
+                       VerticalAlignment="Center"                       
                        Grid.Column="{Binding Path=Juego.Posicion[0],Converter={StaticResource PH}}"
                        Grid.Row="{Binding Path=Juego.Posicion[1],Converter={StaticResource PV}}">
-                    <Image.Effect>
-                        <DropShadowEffect Color="red"
-                                          Direction="0"
-                                          ShadowDepth="0"
-                                          x:Name="jessy"
-                                          RenderingBias="Quality"></DropShadowEffect>
-                    </Image.Effect>
-                    <Image.Resources>
-                        <Style TargetType="Image">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding Daño}" Value="True">
-                                    <DataTrigger.EnterActions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <DoubleAnimation BeginTime="0:0:0"
-                                                 Duration="0:0:0.1"
-                                                 From="0"
-                                                 To="25"
-                                                 Storyboard.TargetProperty="BlurRadius"
-                                                 Storyboard.TargetName="jessy"
-                                                 RepeatBehavior="3"
-                                                 AutoReverse="True"></DoubleAnimation>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </DataTrigger.EnterActions>
-                                   
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Image.Resources>
-               
                 </Image>
 
 
