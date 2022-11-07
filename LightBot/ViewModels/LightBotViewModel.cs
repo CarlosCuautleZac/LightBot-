@@ -273,6 +273,7 @@ namespace LightBot.ViewModels
                  
                     if (juego.Vidas == 0)
                     {
+                        await Task.Delay(1000);
                         FinDeJuego(false);
                         break;
                     }
@@ -290,6 +291,7 @@ namespace LightBot.ViewModels
 
                     if (juego.Vidas == 0)
                     {
+                        await Task.Delay(1000);
                         FinDeJuego(false);
                         break;
                     }
@@ -306,6 +308,7 @@ namespace LightBot.ViewModels
 
                     if (juego.Vidas == 0)
                     {
+                        await Task.Delay(1000);
                         FinDeJuego(false);
                         break;
                     }
@@ -322,6 +325,7 @@ namespace LightBot.ViewModels
 
                     if (juego.Vidas == 0)
                     {
+                        await Task.Delay(1000);
                         FinDeJuego(false);
                         break;
                     }
@@ -338,6 +342,7 @@ namespace LightBot.ViewModels
 
                     if (juego.Vidas == 0)
                     {
+                        await Task.Delay(1000);
                         FinDeJuego(false);
                         break;
                     }
