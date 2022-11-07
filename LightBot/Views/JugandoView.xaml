@@ -356,7 +356,7 @@
                         <DropShadowEffect Color="red"
                                           Direction="0"
                                           ShadowDepth="0"
-                                          x:Name="vaquera"
+                                          x:Name="jessy"
                                           RenderingBias="Quality"></DropShadowEffect>
                     </Image.Effect>
                     <Image.Resources>
@@ -370,8 +370,8 @@
                                                  Duration="0:0:0.1"
                                                  From="0"
                                                  To="25"
-                                                 Storyboard.TargetName="vaquera"
                                                  Storyboard.TargetProperty="BlurRadius"
+                                                 Storyboard.TargetName="jessy"
                                                  RepeatBehavior="3"
                                                  AutoReverse="True"></DoubleAnimation>
                                             </Storyboard>
