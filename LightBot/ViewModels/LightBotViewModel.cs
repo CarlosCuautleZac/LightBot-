@@ -41,7 +41,7 @@ namespace LightBot.ViewModels
 
         public int Nivel { get; set; }
 
-        public bool Daño { get; set; }
+        public bool Daño { get; set; } = false;
 
         //Movimientos Permitidos
         string derecha = "→";
@@ -225,6 +225,9 @@ namespace LightBot.ViewModels
                 //Obtenemos la pieza actual
                 for (int i = 0; i < instrucciones.Length; i++)
                 {
+                    Daño = false;
+                    Actualizar(nameof(Daño));
+
                     if (instrucciones[i] == izquierda && Juego.Posicion[0] == 'A' || instrucciones[i] == derecha && Juego.Posicion[0] == 'E'
                       || instrucciones[i] == arriba && Juego.Posicion[1] == '1' || instrucciones[i] == abajo && Juego.Posicion[1] == '5')
                     {
@@ -258,8 +261,6 @@ namespace LightBot.ViewModels
 
                     //Ver si la monita se movio a un cactus para que pierda una vida
 
-                    Daño = false;
-                    Actualizar(nameof(Daño));
 
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A')
                     {
@@ -269,12 +270,12 @@ namespace LightBot.ViewModels
                         Actualizar("");
 
                     }
-
-                    Daño = false;
-                    Actualizar(nameof(Daño));
-
+                 
                     if (juego.Vidas == 0)
+                    {
                         FinDeJuego(false);
+                        break;
+                    }
 
                     if (Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B')
                     {
@@ -285,11 +286,13 @@ namespace LightBot.ViewModels
                     }
 
 
-                    Daño = false;
-                    Actualizar(nameof(Daño));
+                    
 
                     if (juego.Vidas == 0)
+                    {
                         FinDeJuego(false);
+                        break;
+                    }
 
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'C')
                     {
@@ -299,11 +302,13 @@ namespace LightBot.ViewModels
                         Actualizar("");
                     }
 
-                    Daño = false;
-                    Actualizar(nameof(Daño));
+                    
 
                     if (juego.Vidas == 0)
+                    {
                         FinDeJuego(false);
+                        break;
+                    }
 
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'D')
                     {
@@ -313,11 +318,13 @@ namespace LightBot.ViewModels
                         Actualizar("");
                     }
 
-                    Daño = false;
-                    Actualizar(nameof(Daño));
+                   
 
                     if (juego.Vidas == 0)
+                    {
                         FinDeJuego(false);
+                        break;
+                    }
 
                     if (Juego.Posicion[1] == '5' && Juego.Posicion[0] == 'D')
                     {
@@ -327,12 +334,14 @@ namespace LightBot.ViewModels
                         Actualizar("");
                     }
 
-                    Daño = false;
-                    Actualizar(nameof(Daño));
+                    
 
                     if (juego.Vidas == 0)
+                    {
                         FinDeJuego(false);
-
+                        break;
+                    }
+                   
                     //Quitamos Puntos
                     juego.Puntos -= 500;
                     Actualizar("Juego");
@@ -340,9 +349,11 @@ namespace LightBot.ViewModels
                     //VerificarMovimientos(juego.TotalMovimientos);
                     Actualizar("");
                     //El programa se detiene 3 segundos para avanzar a la siguiente posicion
-                    await Task.Delay(1000);
+                    await Task.Delay(1000);                
                 }
                 //Reiniciamos el contador despues de todos los movimientos
+                Daño = false;
+                Actualizar(nameof(Daño));
                 juego.Movimientos = 5;
                 VerificarIntentoNivel2();
                 Actualizar();

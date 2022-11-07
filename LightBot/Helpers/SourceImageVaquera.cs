@@ -12,12 +12,13 @@ namespace LightBot.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            var daño = (bool)value;
             string ruta = "";
-            if (value is bool == true)
+            if (daño)
             {
                 ruta = "/Assets/cowGirlGolpeada.png";
             }
-            else if (value is byte == false)
+            else if (!daño)
             {
                 ruta = "/Assets/cowGirl.png";
             }
