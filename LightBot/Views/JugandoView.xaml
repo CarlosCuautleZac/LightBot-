@@ -148,15 +148,38 @@
                         Grid.Column="0"
                         Grid.Row="4"></Border>
 
+                <!--VAQUITAAAAAAAAAAAAA-->
                 <Image Source="/Assets/lostCow1.png"
                        HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Grid.Column="2"
-                       Grid.Row="1"
+                       VerticalAlignment="Center"                      
                        RenderTransformOrigin=".5,.5">
                     <Image.RenderTransform>
                         <RotateTransform x:Name="vaca"></RotateTransform>
                     </Image.RenderTransform>
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Grid.Column" Value="2"></Setter>
+                            <Setter Property="Grid.Row" Value="1"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="1">
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="2">
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Grid.Row" Value="0"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
                     <Image.Triggers>
                         <EventTrigger RoutedEvent="Loaded">
                             <BeginStoryboard>
@@ -176,12 +199,189 @@
                     </Image.Triggers>
                 </Image>
 
+                <!--CACTUUUUUUUUUUUUS-->
+                
+                <Image Source="/Assets/cactus.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="0"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+
+                <Image Source="/Assets/cactus.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="0"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="0"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="0"></Setter>
+                                    <Setter Property="Grid.Column" Value="4"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/cactus.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="4"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/cactus.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="4"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/cactus.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="2">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="4"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="4"></Setter>
+                                    <Setter Property="Grid.Column" Value="0"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/cactus.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="4"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                
+                <!--VAQUERITAAAAAAAA-->
+
                 <Image Source="/Assets/cowGirl.png"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Grid.Column="{Binding Path=Juego.Posicion[0],Converter={StaticResource PH}}"
                        Grid.Row="{Binding Path=Juego.Posicion[1],Converter={StaticResource PV}}">
-                    
+                    <Image.Effect>
+                        <DropShadowEffect Color="red"
+                                          Direction="0"
+                                          ShadowDepth="0"
+                                          x:Name="vaquera"
+                                          RenderingBias="Quality"></DropShadowEffect>
+                    </Image.Effect>
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Daño}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation BeginTime="0:0:0"
+                                                 Duration="0:0:0.1"
+                                                 From="0"
+                                                 To="25"
+                                                 Storyboard.TargetName="vaquera"
+                                                 Storyboard.TargetProperty="BlurRadius"
+                                                 RepeatBehavior="3"
+                                                 AutoReverse="True"></DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                   
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
                
                 </Image>
 
