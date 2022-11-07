@@ -41,6 +41,8 @@ namespace LightBot.ViewModels
 
         public int Nivel { get; set; }
 
+        public bool Daño { get; set; }
+
         //Movimientos Permitidos
         string derecha = "→";
         string arriba = "↑";
@@ -255,12 +257,21 @@ namespace LightBot.ViewModels
 
 
                     //Ver si la monita se movio a un cactus para que pierda una vida
+
+                    Daño = false;
+                    Actualizar(nameof(Daño));
+
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A')
                     {
                         Juego.Vidas -= 1;
                         juego.Puntos -= 1000;
+                        Daño = true;
                         Actualizar("");
+
                     }
+
+                    Daño = false;
+                    Actualizar(nameof(Daño));
 
                     if (juego.Vidas == 0)
                         FinDeJuego(false);
@@ -269,8 +280,13 @@ namespace LightBot.ViewModels
                     {
                         Juego.Vidas -= 1;
                         juego.Puntos -= 1000;
+                        Daño = true;
                         Actualizar("");
                     }
+
+
+                    Daño = false;
+                    Actualizar(nameof(Daño));
 
                     if (juego.Vidas == 0)
                         FinDeJuego(false);
@@ -279,8 +295,12 @@ namespace LightBot.ViewModels
                     {
                         Juego.Vidas -= 1;
                         juego.Puntos -= 1000;
+                        Daño = true;
                         Actualizar("");
                     }
+
+                    Daño = false;
+                    Actualizar(nameof(Daño));
 
                     if (juego.Vidas == 0)
                         FinDeJuego(false);
@@ -289,8 +309,12 @@ namespace LightBot.ViewModels
                     {
                         Juego.Vidas -= 1;
                         juego.Puntos -= 1000;
+                        Daño = true;
                         Actualizar("");
                     }
+
+                    Daño = false;
+                    Actualizar(nameof(Daño));
 
                     if (juego.Vidas == 0)
                         FinDeJuego(false);
@@ -299,8 +323,12 @@ namespace LightBot.ViewModels
                     {
                         Juego.Vidas -= 1;
                         juego.Puntos -= 1000;
+                        Daño = true;
                         Actualizar("");
                     }
+
+                    Daño = false;
+                    Actualizar(nameof(Daño));
 
                     if (juego.Vidas == 0)
                         FinDeJuego(false);
