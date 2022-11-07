@@ -142,6 +142,12 @@ namespace LightBot.ViewModels
                 NuevoJuego("2");
 
             }
+
+            //else if (Resultado == "¡Felicidades, superaste el segundo nivel!")
+            //{
+            //    Vista = "VerNiveles";
+            //}
+
             else
                 Vista = "VerNiveles";
 
@@ -151,9 +157,19 @@ namespace LightBot.ViewModels
         private void FinDeJuego(bool ganojuego)
         {
             TotalMovimientos = "";
-            if (ganojuego)
+
+
+            if (ganojuego && Nivel == 1)
             {
                 Resultado = "¡Felicidades, superaste el primer nivel!";
+                Vista = "Mensaje";
+                //if (jugandoView != null)
+                //    jugandoView.Close();
+                Actualizar();
+            }
+            else if (ganojuego && Nivel == 2)
+            {
+                Resultado = "¡Felicidades, superaste el segundo nivel!";
                 Vista = "Mensaje";
                 //if (jugandoView != null)
                 //    jugandoView.Close();
