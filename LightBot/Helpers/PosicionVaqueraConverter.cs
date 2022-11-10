@@ -14,8 +14,6 @@ namespace LightBot.Helpers
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
              char juego = (char)value;
-
-
             if (juego == '1')
                 return 0;
             else if (juego == '2')

@@ -21,7 +21,10 @@ namespace LightBot.Helpers
             else if (nivel == 2)
             {
                 ruta = "../Assets/Instrucciones2.png";
-
+            }
+            else if (nivel == 2)
+            {
+                ruta = "../Assets/Instrucciones3.png";
             }
             return ruta;
         }

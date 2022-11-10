@@ -16,9 +16,6 @@ namespace LightBot.Helpers
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             char juego = (char)value;
-           
-
-
             if (juego == 'A')
                 return 0;
             else if (juego == 'B')
@@ -29,8 +26,6 @@ namespace LightBot.Helpers
                 return 3;
             else /*if (juego.Posicion[1] == 'E')*/
                 return 4;
-
-
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
