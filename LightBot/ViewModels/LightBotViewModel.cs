@@ -252,26 +252,24 @@ namespace LightBot.ViewModels
                     if (instrucciones[i] == izquierda && Juego.Posicion[1] != 'A')
                     {
                         Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Derecha
                     if (instrucciones[i] == derecha && Juego.Posicion[1] != 'E')
                     {
                         Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Arriba
                     if (instrucciones[i] == arriba && Juego.Posicion[0] != '0')
                     {
                         Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Abajo
                     if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
                     {
                         Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
-                        Juego.Movimientos -= 1;
                     }
+                    //Quitamos un movimiento
+                    Juego.Movimientos -= 1;
                     //Quitamos Puntos
                     juego.Puntos -= 500;
                     Actualizar("Juego");
@@ -284,13 +282,11 @@ namespace LightBot.ViewModels
                 //Reiniciamos el contador despues de todos los movimientos
                 juego.Movimientos = 5;
                 VerificarIntento();
-                Actualizar();
             }
             else
             {
                 MessageBox.Show("Solo puedes tener 5 movimientos");
                 TotalMovimientos = "";
-                Actualizar();
             }
             EnMovimiento = true;
             Actualizar();
@@ -350,26 +346,24 @@ namespace LightBot.ViewModels
                     if (instrucciones[i] == izquierda && Juego.Posicion[1] != 'A')
                     {
                         Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Derecha
                     if (instrucciones[i] == derecha && Juego.Posicion[1] != 'E')
                     {
                         Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Arriba
                     if (instrucciones[i] == arriba && Juego.Posicion[0] != '0')
                     {
                         Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Abajo
                     if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
                     {
                         Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
-                        Juego.Movimientos -= 1;
                     }
+                    //Quitamos un movimiento
+                    Juego.Movimientos -= 1;
                     //Ver si la monita se movio a un cactus para que pierda una vida
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B' ||
                         Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'C' || Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'D' ||
@@ -403,13 +397,11 @@ namespace LightBot.ViewModels
                 Actualizar(nameof(Daño));
                 juego.Movimientos = 5;
                 VerificarIntentoNivel2();
-                Actualizar();
             }
             else
             {
                 MessageBox.Show("Solo puedes tener 5 movimientos");
                 TotalMovimientos = "";
-                Actualizar();
             }
             EnMovimiento = true;
             Actualizar();
@@ -476,19 +468,17 @@ namespace LightBot.ViewModels
                     if (instrucciones[i] == izquierda && Juego.Posicion[1] != 'A')
                     {
                         Juego.Posicion[0] = (char)(Juego.Posicion[0] - 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Derecha
                     if (instrucciones[i] == derecha && Juego.Posicion[1] != 'E')
                     {
                         Juego.Posicion[0] = (char)(Juego.Posicion[0] + 1);
-                        Juego.Movimientos -= 1;
                     }
                     //Arriba
                     if (instrucciones[i] == arriba && Juego.Posicion[0] != '0')
                     {
-                        //Salto
-                        if (juego.Posicion[1] != '3')
+                        //Salto hacia arriba
+                        if (juego.Posicion[1] != '4')
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
                         }
@@ -496,13 +486,19 @@ namespace LightBot.ViewModels
                         {
                             continue;
                         }
-                        Juego.Movimientos -= 1;
                     }
                     //Abajo
                     if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
                     {
-                        Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
-                        Juego.Movimientos -= 1;
+                        //Salto hacia abajo
+                        if (juego.Posicion[1] != '2')
+                        {
+                            Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                     //Salto hacia abajo
                     if (instrucciones[i] == salto && juego.Posicion[1] == 2 && instrucciones[i-1] == abajo)
@@ -513,6 +509,8 @@ namespace LightBot.ViewModels
                     {
                         juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
                     }
+                    //Quitamos un movimiento
+                    Juego.Movimientos -= 1;
                     //Ver si la monita se movio a un cactus para que pierda una vida
                     if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B' ||
                         Juego.Posicion[1] == '5' && Juego.Posicion[0] == 'C')
@@ -529,7 +527,6 @@ namespace LightBot.ViewModels
                         FinDeJuego(false);
                         break;
                     }
-
                     //Quitamos Puntos
                     juego.Puntos -= 500;
                     Actualizar("Juego");
@@ -544,13 +541,11 @@ namespace LightBot.ViewModels
                 Actualizar(nameof(Daño));
                 juego.Movimientos = 5;
                 VerificarIntentoNivel3();
-                Actualizar();
             }
             else
             {
                 MessageBox.Show("Solo puedes tener 5 movimientos");
                 TotalMovimientos = "";
-                Actualizar();
             }
             EnMovimiento = true;
             Actualizar();
@@ -583,7 +578,6 @@ namespace LightBot.ViewModels
                 FinDeJuego(false);
             }
         }
-
         #endregion
         public void Actualizar(string nombre = "")
         {
