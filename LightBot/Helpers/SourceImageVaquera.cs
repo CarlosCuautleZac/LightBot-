@@ -16,7 +16,7 @@ namespace LightBot.Helpers
             string ruta = "";
             if (daño)
             {
-                ruta = "/Assets/cowGirlGolpeada.png";
+                ruta = "/Assets/cowGirlGolpeadaDos.png";
             }
             else if (!daño)
             {
