@@ -22,7 +22,7 @@ namespace LightBot.Helpers
             {
                 ruta = "../Assets/Instrucciones2.png";
             }
-            else if (nivel == 2)
+            else if (nivel == 3)
             {
                 ruta = "../Assets/Instrucciones3.png";
             }

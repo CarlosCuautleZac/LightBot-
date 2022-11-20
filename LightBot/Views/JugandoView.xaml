@@ -200,6 +200,205 @@
                     </Image.Triggers>
                 </Image>
 
+                <!--OBSTACULOS DE MADERA-->
+
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="0"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="0"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="2"></Setter>
+                                    <Setter Property="Grid.Column" Value="4"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="3"></Setter>
+                                    <Setter Property="Grid.Column" Value="4"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="0"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="1"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="2"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+                <Image Source="/Assets/obstaculo.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Stretch="fill">
+                    <Image.Resources>
+                        <Style TargetType="Image">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                    <Setter Property="Grid.Row" Value="1"></Setter>
+                                    <Setter Property="Grid.Column" Value="4"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Resources>
+                </Image>
+
+
                 <!--CACTUUUUUUUUUUUUS-->
                 
                 <Image Source="/Assets/cactus.png"
@@ -347,7 +546,7 @@
                 </Image>
                 
                 <!--VAQUERITAAAAAAAA-->
-
+                
                 <Image Source="{Binding Daño, Converter={StaticResource SourceVaquera}}"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"                       
@@ -451,6 +650,35 @@
                         Grid.Row="1"
                         Style="{StaticResource botonControl}"
                         Command="{Binding MoverDependiendoElNivelCommand}">&#9673;</Button>
+                <Button Grid.Column="2"
+                        Command="{Binding }">↷
+
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Visibility" Value="Collapsed"></Setter>
+                            <Setter Property="Background" Value="#E14D2A"></Setter>
+                            <Setter Property="Margin" Value="10"></Setter>
+                            <Setter Property="BorderThickness" Value="0"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
+                            <Setter Property="FontSize" Value="85"></Setter>
+                            <Setter Property="FontWeight" Value="Black"></Setter>
+                            <Setter Property="Padding" Value="0,-10,0,0"></Setter>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                                <Trigger Property="IsMouseCaptured" Value="True">
+                                    <Setter Property="Margin" Value="14"></Setter>
+                                    <Setter Property="FontSize" Value="80"></Setter>
+                                    <Setter Property="Background" Value="#c24123"></Setter>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#d65436"></Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
             </Grid>
 

@@ -20,7 +20,7 @@ namespace LightBot.Helpers
             }
             else if (!daño)
             {
-                ruta = "/Assets/cowGirl.png";
+                ruta = "/Assets/cowGirlDos.gif";
             }
             return ruta;
         }
