@@ -512,8 +512,7 @@ namespace LightBot.ViewModels
                     //Quitamos un movimiento
                     Juego.Movimientos -= 1;
                     //Ver si la monita se movio a un cactus para que pierda una vida
-                    if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B' ||
-                        Juego.Posicion[1] == '5' && Juego.Posicion[0] == 'C')
+                    if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B')
                     {
                         Juego.Vidas -= 1;
                         juego.Puntos -= 1000;
@@ -556,8 +555,7 @@ namespace LightBot.ViewModels
             if (Juego.Vidas >= 1)
             {
                 //Posicion de los cactus
-                if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B' ||
-                    Juego.Posicion[1] == '5' && Juego.Posicion[0] == 'C')
+                if (Juego.Posicion[1] == '4' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '2' && Juego.Posicion[0] == 'B')
                 {
                     Juego.Posicion[0] = 'C';
                     Juego.Posicion[1] = '5';
@@ -565,7 +563,7 @@ namespace LightBot.ViewModels
                 Actualizar("");
 
                 juego.Vidas -= 1;
-                if (juego.Posicion[0] == 'D' && juego.Posicion[1] == '3') { FinDeJuego(true); }
+                if (juego.Posicion[0] == 'C' && juego.Posicion[1] == '2') { FinDeJuego(true); }
                 else if (juego.Vidas == 0) { FinDeJuego(false); }
                 else
                 {
