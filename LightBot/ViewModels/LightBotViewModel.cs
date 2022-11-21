@@ -507,6 +507,13 @@ namespace LightBot.ViewModels
                     }
                     if (instrucciones[i] == salto && juego.Posicion[1] == '4' && instrucciones[i-1] == arriba)
                     {
+                        if (juego.Posicion[0]=='E')
+                        {
+                            Juego.Vidas -= 1;
+                            juego.Puntos -= 1000;
+                            Daño = true;
+                            Actualizar("");
+                        }
                         juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
                     }
                     //Quitamos un movimiento
