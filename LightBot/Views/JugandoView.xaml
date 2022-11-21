@@ -650,7 +650,7 @@
                         Grid.Row="1"
                         Style="{StaticResource botonControl}"
                         Command="{Binding MoverDependiendoElNivelCommand}">&#9673;</Button>
-                <Button Grid.Column="2" Visibility="Visible"
+                <Button Grid.Column="2"
                         Command="{Binding ConcatenarMovimientosCommand}" CommandParameter="&#8631;">&#8631;
 
                     <Button.Style>
