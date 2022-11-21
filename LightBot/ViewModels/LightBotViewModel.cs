@@ -477,7 +477,7 @@ namespace LightBot.ViewModels
                     //Arriba
                     if (instrucciones[i] == arriba && Juego.Posicion[0] != '0')
                     {
-                        //Salto hacia arriba
+                        //parar en la cuarta fila
                         if (juego.Posicion[1] != '4')
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
@@ -490,7 +490,7 @@ namespace LightBot.ViewModels
                     //Abajo
                     if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
                     {
-                        //Salto hacia abajo
+                        //parar en la segunda fila
                         if (juego.Posicion[1] != '2')
                         {
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
@@ -501,11 +501,11 @@ namespace LightBot.ViewModels
                         }
                     }
                     //Salto hacia abajo
-                    if (instrucciones[i] == salto && juego.Posicion[1] == 2 && instrucciones[i-1] == abajo)
+                    if (instrucciones[i] == salto && juego.Posicion[1] == '2' && instrucciones[i-1] == abajo)
                     {
                         juego.Posicion[1] = (char)(Juego.Posicion[1] + 2);
                     }
-                    if (instrucciones[i] == salto && juego.Posicion[1] == 4 && instrucciones[i-1] == arriba)
+                    if (instrucciones[i] == salto && juego.Posicion[1] == '4' && instrucciones[i-1] == arriba)
                     {
                         juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
                     }
@@ -550,6 +550,7 @@ namespace LightBot.ViewModels
             EnMovimiento = true;
             Actualizar();
         }
+
         private void VerificarIntentoNivel3()
         {
             if (Juego.Vidas >= 1)
