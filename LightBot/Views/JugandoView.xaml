@@ -159,8 +159,6 @@
                     </Image.RenderTransform>
                     <Image.Resources>
                         <Style TargetType="Image">
-                            <Setter Property="Grid.Column" Value="2"></Setter>
-                            <Setter Property="Grid.Row" Value="1"></Setter>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Nivel}" Value="1">
                                     <Setter Property="Grid.Row" Value="1"></Setter>
@@ -175,8 +173,8 @@
                                     <Setter Property="Grid.Column" Value="2"></Setter>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Nivel}" Value="4">
-                                    <Setter Property="Grid.Row" Value="{Binding Row}"></Setter>
-                                    <Setter Property="Grid.Column" Value="{Binding Column}"></Setter>
+                                    <Setter Property="Grid.Row" Value="{Binding RowVaca}"></Setter>
+                                    <Setter Property="Grid.Column" Value="{Binding ColVaca}"></Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

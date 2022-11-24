@@ -41,6 +41,10 @@ namespace LightBot.ViewModels
         public int Nivel { get; set; }
         public bool Daño { get; set; } = false;
 
+        //Posicion de la Vaca
+        public int ColVaca { get; set; }
+        public int RowVaca { get; set; }
+       
         //Movimientos Permitidos
         string derecha = "→";
         string arriba = "↑";
@@ -48,12 +52,14 @@ namespace LightBot.ViewModels
         string abajo = "↓";
         string salto = "↷";
 
+        //Random//
+        Random R = new Random();
+
         //Constructor//
         public LightBotViewModel()
         {
             //Instanciacion de nuevo Juego
             Juego = new();
-
             //Comandos
             NuevoJuegoCommand = new RelayCommand<string>(NuevoJuego);
             MoverCommand = new RelayCommand(Mover);
@@ -83,7 +89,6 @@ namespace LightBot.ViewModels
         }
 
         #region Metodos en comun de todos los niveles
-
         private void CambiarVistaAJugar()
         {
             Vista = "Juego";
@@ -112,7 +117,6 @@ namespace LightBot.ViewModels
                 //jugandoView = new() { DataContext = this };
                 //jugandoView.ShowDialog();
             }
-
             if (nivelajugar == 2)
             {
                 Juego.Vidas = 3;
@@ -135,21 +139,22 @@ namespace LightBot.ViewModels
             if (nivelajugar == 4)
             {
                 Juego.Vidas = 3;
+                Juego.Movimientos=9;
                 Juego.Posicion = new char[2];
-                Juego.Posicion[0] = 'C';
+                //Jugador
+                Juego.Posicion[0] = 'E';
                 Juego.Posicion[1] = '5';
+                GeneracionRowAleatoria();
                 Vista = "Instrucciones";
             }
             Actualizar("");
         }
-
         private void ConcatenarMovimientos(string movimiento)
         {
             movimiento = movimiento.ToUpper();
             TotalMovimientos += movimiento + ",";
             Actualizar("TotalMovimientos");
         }
-
         private void VerNiveles()
         {
             if (Resultado == "Solo puedes tener hasta 5 movimientos")
@@ -174,7 +179,6 @@ namespace LightBot.ViewModels
 
             Actualizar();
         }
-
         private void FinDeJuego(bool ganojuego)
         {
             TotalMovimientos = "";
@@ -217,7 +221,6 @@ namespace LightBot.ViewModels
             EnMovimiento = true;
             Actualizar("");
         }
-
         private bool ValidarMovimientos(string movimientos)
         {
             var instrucciones = movimientos.Split(',');
@@ -237,9 +240,7 @@ namespace LightBot.ViewModels
                 return true;
             }
         }
-
         #endregion
-    
         #region Nivel 1
 
         public async void Mover()
@@ -598,6 +599,30 @@ namespace LightBot.ViewModels
         }
         #endregion
         #region Nivel 4
+        private void GeneracionRowAleatoria()
+        {
+            //Vaca
+            RowVaca = R.Next(0, 5);
+           
+            if(RowVaca == 1 || RowVaca == 3)
+            {
+                GeneracionRowAleatoria();
+            }
+            else
+            {
+                GeneracionColAleatoria();
+            }
+        }
+
+        private void GeneracionColAleatoria()
+        {
+            ColVaca = R.Next(0, 5);
+            if (((RowVaca==0||RowVaca==2)&& (ColVaca==1 || ColVaca==4)) || (RowVaca==4 && (ColVaca==0 || ColVaca==2)))
+            {
+                GeneracionColAleatoria();
+            }
+        }
+
         private async void MoverEnNivel4()
         {
             EnMovimiento = false;
