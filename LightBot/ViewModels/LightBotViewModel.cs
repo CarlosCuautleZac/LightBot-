@@ -636,34 +636,34 @@ namespace LightBot.ViewModels
                     if (instrucciones[i] == arriba && Juego.Posicion[0] != '0')
                     {
                         //parar en la quinta y tercera fila
-                        if (juego.Posicion[1] != '5' || juego.Posicion[1] !='3')
+                        if (juego.Posicion[1] == '5' || juego.Posicion[1] =='3')
                         {
-                            Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
+                            continue;
                         }
                         else
                         {
-                            continue;
+                            Juego.Posicion[1] = (char)(Juego.Posicion[1] - 1);
                         }
                     }
                     //Abajo
                     if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
                     {
                         //parar en la primera y tercera fila
-                        if (juego.Posicion[1] != '1' || juego.Posicion[1] != '3')
-                        {
-                            Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
-                        }
-                        else
+                        if (juego.Posicion[1] == '1' || juego.Posicion[1] == '3')
                         {
                             continue;
                         }
+                        else
+                        {
+                           Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
+                        }
                     }
                     //Salto hacia abajo
-                    if (instrucciones[i] == salto && juego.Posicion[1] == '2' && instrucciones[i - 1] == abajo)
+                    if (instrucciones[i] == salto && (juego.Posicion[1] == '1' ||  juego.Posicion[1] == '3') && instrucciones[i - 1] == abajo)
                     {
                         juego.Posicion[1] = (char)(Juego.Posicion[1] + 2);
                     }
-                    if (instrucciones[i] == salto && juego.Posicion[1] == '4' && instrucciones[i - 1] == arriba)
+                    if (instrucciones[i] == salto && (juego.Posicion[1] == '5' || juego.Posicion[1] == '3') && instrucciones[i - 1] == arriba)
                     {
                         juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
                     }

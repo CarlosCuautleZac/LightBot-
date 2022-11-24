@@ -175,8 +175,8 @@
                                     <Setter Property="Grid.Column" Value="2"></Setter>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Nivel}" Value="4">
-                                    <Setter Property="Grid.Row" Value="0"></Setter>
-                                    <Setter Property="Grid.Column" Value="3"></Setter>
+                                    <Setter Property="Grid.Row" Value="{Binding Row}"></Setter>
+                                    <Setter Property="Grid.Column" Value="{Binding Column}"></Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -665,6 +665,9 @@
                             <Setter Property="Padding" Value="0,-10,0,0"></Setter>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding Nivel}" Value="3">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Nivel}" Value="4">
                                     <Setter Property="Visibility" Value="Visible"></Setter>
                                 </DataTrigger>
                                 <Trigger Property="IsMouseCaptured" Value="True">
