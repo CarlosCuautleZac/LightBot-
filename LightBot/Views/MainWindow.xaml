@@ -45,10 +45,20 @@
     <Grid>
           <ContentControl>
     </ContentControl>
-        <Grid Visibility="Collapsed">
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Visibility" Value="Collapsed"></Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding HayMensaje}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"></Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Resources>
            
             <Grid.Background>
-                <SolidColorBrush Color="#f4dfba" Opacity=".5"></SolidColorBrush>
+                <SolidColorBrush Color="#f4dfba" Opacity=".4"></SolidColorBrush>
             </Grid.Background>
             <Border Background="#F4DFBA" Height="200" Width="400" HorizontalAlignment="Center" VerticalAlignment="Center" CornerRadius="15">
                 <Border.Effect>

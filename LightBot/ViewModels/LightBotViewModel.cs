@@ -41,6 +41,8 @@ namespace LightBot.ViewModels
         public int Nivel { get; set; }
         public bool Daño { get; set; } = false;
 
+        public bool HayMensaje { get; set; }
+
         //Posicion de la Vaca
         public int ColVaca { get; set; }
         public int RowVaca { get; set; }
@@ -71,6 +73,7 @@ namespace LightBot.ViewModels
             CambiarVistaAJugarCommand = new RelayCommand(CambiarVistaAJugar);
             MoverDependiendoElNivelCommand = new RelayCommand(MoverDependiendoElNivel);
 
+            HayMensaje = false;
             Actualizar("");
         }
 
@@ -164,19 +167,24 @@ namespace LightBot.ViewModels
             else if (Resultado == "¡Felicidades, superaste el primer nivel!")
             {
                 NuevoJuego("2");
+                
             }
 
             else if (Resultado == "¡Felicidades, superaste el segundo nivel!")
             {
                 NuevoJuego("3");
+                
             }
             else if (Resultado == "¡Felicidades, superaste el tercer nivel!")
             {
                 NuevoJuego("4");
             }
             else
+            {
                 Vista = "VerNiveles";
-
+                
+            }
+            HayMensaje = false;
             Actualizar();
         }
         private void FinDeJuego(bool ganojuego)
@@ -186,7 +194,8 @@ namespace LightBot.ViewModels
             if (ganojuego && Nivel == 1)
             {
                 Resultado = "¡Felicidades, superaste el primer nivel!";
-                Vista = "Mensaje";
+                
+                HayMensaje = true;
                 //if (jugandoView != null)
                 //    jugandoView.Close();
                 Actualizar();
@@ -194,7 +203,8 @@ namespace LightBot.ViewModels
             else if (ganojuego && Nivel == 2)
             {
                 Resultado = "¡Felicidades, superaste el segundo nivel!";
-                Vista = "Mensaje";
+                HayMensaje = true;
+
                 //if (jugandoView != null)
                 //    jugandoView.Close();
                 Actualizar();
@@ -202,7 +212,7 @@ namespace LightBot.ViewModels
             else if (ganojuego && Nivel == 3)
             {
                 Resultado = "¡Felicidades, superaste el tercer nivel!";
-                Vista = "Mensaje";
+                HayMensaje = true;
                 Actualizar();
             }
             else if (ganojuego && Nivel == 4)
@@ -214,7 +224,7 @@ namespace LightBot.ViewModels
             else
             {
                 Resultado = "Perdiste, Fin del Juego";
-                Vista = "Mensaje";
+                HayMensaje = true;
                 //jugandoView.Close();
             }
 
