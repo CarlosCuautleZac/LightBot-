@@ -173,8 +173,8 @@
                                     <Setter Property="Grid.Column" Value="2"></Setter>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding Nivel}" Value="4">
-                                    <Setter Property="Grid.Row" Value="{Binding RowVaca}"></Setter>
-                                    <Setter Property="Grid.Column" Value="{Binding ColVaca}"></Setter>
+                                    <Setter Property="Grid.Row" Value="{Binding RowAleatoria}"></Setter>
+                                    <Setter Property="Grid.Column" Value="{Binding ColAleatoria}"></Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>

@@ -42,11 +42,11 @@ namespace LightBot.ViewModels
         public bool Daño { get; set; } = false;
 
         public bool HayMensaje { get; set; }
-
         //Posicion de la Vaca
-        public int ColVaca { get; set; }
-        public int RowVaca { get; set; }
-       
+        public int ColAleatoria { get; set; }
+        public int RowAleatoria { get; set; }
+        public char ColumnaVaca;
+        private char RenglonVaca;
         //Movimientos Permitidos
         string derecha = "→";
         string arriba = "↑";
@@ -142,7 +142,7 @@ namespace LightBot.ViewModels
             if (nivelajugar == 4)
             {
                 Juego.Vidas = 3;
-                Juego.Movimientos=9;
+                Juego.Movimientos=8;
                 Juego.Posicion = new char[2];
                 //Jugador
                 Juego.Posicion[0] = 'E';
@@ -234,8 +234,14 @@ namespace LightBot.ViewModels
         private bool ValidarMovimientos(string movimientos)
         {
             var instrucciones = movimientos.Split(',');
-            if (instrucciones.Length > 5)
+            if ((Nivel>0 && Nivel<4) && instrucciones.Length > 5)
+            {
                 return false;
+            }
+            else if (Nivel==4 && instrucciones.Length>8)
+            {
+                return false;
+            }
             else
             {
                 for (int x = 0; x < instrucciones.Length; x++)
@@ -612,24 +618,64 @@ namespace LightBot.ViewModels
         private void GeneracionRowAleatoria()
         {
             //Vaca
-            RowVaca = R.Next(0, 5);
-           
-            if(RowVaca == 1 || RowVaca == 3)
+            RowAleatoria = R.Next(0, 5);
+            //La generacion tiene que ser entera para dibujar la vaca en el juego
+            if (RowAleatoria == 1 || RowAleatoria == 3)
             {
                 GeneracionRowAleatoria();
+
             }
             else
             {
+                //Asignar Posicion al Renglon
+                if (RowAleatoria==0)
+                {
+                    RenglonVaca='1';
+                }
+                if (RowAleatoria==1)
+                {
+                    RenglonVaca='2';
+                }
+                if (RowAleatoria==2)
+                {
+                    RenglonVaca='3';
+                }
+                if (RowAleatoria==3)
+                {
+                    RenglonVaca='4';
+                }
+                if (RowAleatoria==4)
+                {
+                    RenglonVaca='5';
+                }
                 GeneracionColAleatoria();
             }
         }
 
         private void GeneracionColAleatoria()
         {
-            ColVaca = R.Next(0, 5);
-            if (((RowVaca==0||RowVaca==2)&& (ColVaca==1 || ColVaca==4)) || (RowVaca==4 && (ColVaca==0 || ColVaca==2)))
+            ColAleatoria = R.Next(0, 4);
+            //La generacion tiene que ser entera para dibujar la vaca en el juego
+            if (((RowAleatoria==0||RowAleatoria==2) && (ColAleatoria==1 || ColAleatoria== 4)) || (RowAleatoria==4 && (ColAleatoria==0 || ColAleatoria==2)) || RowAleatoria==5)
             {
                 GeneracionColAleatoria();
+            }
+            //Asignar Posicion a la Columna
+            if (ColAleatoria==0)
+            {
+                ColumnaVaca = 'A';
+            }
+            if (ColAleatoria==1)
+            {
+                ColumnaVaca='B';
+            }
+            if (ColAleatoria==2)
+            {
+                ColumnaVaca='C';
+            }
+            if (ColAleatoria==3)
+            {
+                ColumnaVaca='D';
             }
         }
 
@@ -690,17 +736,26 @@ namespace LightBot.ViewModels
                         }
                         else
                         {
-                           Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
+                            Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
                         }
                     }
                     //Salto hacia abajo
-                    if (instrucciones[i] == salto && (juego.Posicion[1] == '1' ||  juego.Posicion[1] == '3') && instrucciones[i - 1] == abajo)
+                    if (instrucciones[i] == salto && i>=1)
                     {
-                        juego.Posicion[1] = (char)(Juego.Posicion[1] + 2);
+                        //Solo salta si el movimiento anterior es abajo
+                        if ((juego.Posicion[1] == '1' || juego.Posicion[1] == '3') && instrucciones[i - 1] == abajo)
+                        {
+                            juego.Posicion[1] = (char)(Juego.Posicion[1] + 2);
+                        }
                     }
-                    if (instrucciones[i] == salto && (juego.Posicion[1] == '5' || juego.Posicion[1] == '3') && instrucciones[i - 1] == arriba)
+                    //Salto hacia arriba
+                    if (instrucciones[i] == salto && i>=1)
                     {
-                        juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
+                        //Solo salta si el movimiento anterior es arriba
+                        if ((juego.Posicion[1] == '5'||juego.Posicion[1] == '3') && instrucciones[i - 1] == arriba)
+                        {
+                            juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
+                        }
                     }
                     //Quitamos un movimiento
                     Juego.Movimientos -= 1;
@@ -739,7 +794,7 @@ namespace LightBot.ViewModels
             }
             else
             {
-                MessageBox.Show("Solo puedes tener 5 movimientos");
+                MessageBox.Show("Solo puedes tener 8 movimientos");
                 TotalMovimientos = "";
             }
             EnMovimiento = true;
@@ -754,16 +809,16 @@ namespace LightBot.ViewModels
                 if (Juego.Posicion[1] == '5' && Juego.Posicion[0] == 'A' || Juego.Posicion[1] == '3' && Juego.Posicion[0] == 'B' ||
                     Juego.Posicion[1] == '1' && Juego.Posicion[0] == 'B' || Juego.Posicion[1] == '5' && Juego.Posicion[0] == 'C' ||
                     Juego.Posicion[1] == '3' && Juego.Posicion[0] == 'B' || Juego.Posicion[1] == '1' && Juego.Posicion[0] == 'E' ||
-                    Juego.Posicion[1] == '3' && Juego.Posicion[0] == 'E') 
-                { 
-
-                    Juego.Posicion[0] = 'C';
+                    Juego.Posicion[1] == '3' && Juego.Posicion[0] == 'E')
+                {
+                    Juego.Posicion[0] = 'E';
                     Juego.Posicion[1] = '5';
                 }
                 Actualizar("");
 
                 juego.Vidas -= 1;
-                if (juego.Posicion[0] == 'C' && juego.Posicion[1] == '2') { FinDeJuego(true); }
+                //Checar si la posicion actual es la misma posicion que la vaca
+                if (juego.Posicion[0] == ColumnaVaca && juego.Posicion[1] == RenglonVaca) { FinDeJuego(true); }
                 else if (juego.Vidas == 0) { FinDeJuego(false); }
                 else
                 {
