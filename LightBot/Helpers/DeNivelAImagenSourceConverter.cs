@@ -30,6 +30,10 @@ namespace LightBot.Helpers
             {
                 ruta = "../Assets/Instrucciones4.png";
             }
+            else if(nivel ==4)
+            {
+                ruta = "../Assets/Instrucciones4.png";
+            }
             return ruta;
         }
 

@@ -55,6 +55,8 @@ namespace LightBot.ViewModels
         string abajo = "↓";
         string salto = "↷";
 
+        //variable de soporte para cambiar la vista al final
+        int v = 0;
         //Random//
         Random R = new Random();
 
@@ -86,17 +88,23 @@ namespace LightBot.ViewModels
                 case 2: MovenEnNivel2(); break;
                 case 3: MoverEnNivel3(); break;
                 case 4: MoverEnNivel4(); break;
-                default://Cambiar dependiendo el nivel
-                    MovenEnNivel2();
-                    break;
+                //Cambiar dependiendo el nivel
             }
         }
 
         #region Metodos en comun de todos los niveles
         private void CambiarVistaAJugar()
         {
-            Vista = "Juego";
+            if (Vista=="Instrucciones" && v==1)
+            {
+                Vista="Inicio";
+            }
+            else
+            {
+                Vista = "Juego";
+            }
             Actualizar(nameof(Vista));
+            v=0;
         }
         public void NuevoJuego(string nivel)
         {
@@ -150,6 +158,10 @@ namespace LightBot.ViewModels
                 GeneracionRowAleatoria();
                 Vista = "Instrucciones";
             }
+            if(nivelajugar == 5)
+            {
+                Vista="Instrucciones";
+            }
             Actualizar("");
         }
         private void ConcatenarMovimientos(string movimiento)
@@ -180,7 +192,9 @@ namespace LightBot.ViewModels
             }
             else if (Resultado=="¡Felicidades, superaste el cuarto nivel!")
             {
-                Vista = "Inicio";
+                //Falso nivel 5
+                v=1;
+                NuevoJuego("5");
             }
             else
             {
@@ -188,7 +202,7 @@ namespace LightBot.ViewModels
             }
             HayMensaje = false;
             Actualizar(); 
-            Resultado="";
+            Resultado="Instrucciones";
         }
         private void FinDeJuego(bool ganojuego)
         {
