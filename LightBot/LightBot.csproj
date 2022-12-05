@@ -20,6 +20,8 @@
     <None Remove="Assets\Instrucciones1.png" />
     <None Remove="Assets\Instrucciones2.png" />
     <None Remove="Assets\Instrucciones3.png" />
+    <None Remove="Assets\Instrucciones4.png" />
+    <None Remove="Assets\JuegoTerminado.png" />
     <None Remove="Assets\losCow2.gif" />
     <None Remove="Assets\LostCow1.png" />
     <None Remove="Assets\lostCow3.png" />
@@ -59,6 +61,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Instrucciones3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Instrucciones4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\JuegoTerminado.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\losCow2.gif">

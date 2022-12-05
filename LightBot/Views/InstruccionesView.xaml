@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:LightBot.Views"
              xmlns:convertidor="clr-namespace:LightBot.Helpers"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" Background="#ead7c1">
     <UserControl.Resources>
         <convertidor:DeNivelAImagenSourceConverter x:Key="NivelASource"></convertidor:DeNivelAImagenSourceConverter>
     </UserControl.Resources>
@@ -24,6 +24,7 @@
                  FontFamily="Cooper" 
                  Foreground="white" 
                  FontSize="18"
+                 BorderThickness="0"
                  Width="180"
                  Height="45"
                  Content="A BUSCAR!!"></Button>
