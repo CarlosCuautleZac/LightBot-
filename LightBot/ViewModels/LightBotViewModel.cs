@@ -42,9 +42,10 @@ namespace LightBot.ViewModels
         public bool Daño { get; set; } = false;
 
         public bool HayMensaje { get; set; }
-        //Posicion de la Vaca
+        //Posicion de la Vaca(Vista)
         public int ColAleatoria { get; set; }
         public int RowAleatoria { get; set; }
+        //Posicion de la Vaca(Codigo)
         public char ColumnaVaca;
         private char RenglonVaca;
         //Movimientos Permitidos
@@ -62,6 +63,7 @@ namespace LightBot.ViewModels
         {
             //Instanciacion de nuevo Juego
             Juego = new();
+            
             //Comandos
             NuevoJuegoCommand = new RelayCommand<string>(NuevoJuego);
             MoverCommand = new RelayCommand(Mover);
@@ -72,7 +74,6 @@ namespace LightBot.ViewModels
             VerNivelesCommand = new RelayCommand(VerNiveles);
             CambiarVistaAJugarCommand = new RelayCommand(CambiarVistaAJugar);
             MoverDependiendoElNivelCommand = new RelayCommand(MoverDependiendoElNivel);
-
             HayMensaje = false;
             Actualizar("");
         }
@@ -104,7 +105,6 @@ namespace LightBot.ViewModels
             //Nivel a Jugar
             int nivelajugar = int.Parse(nivel);
             Juego = new();
-
             Juego.Puntos = 5000;
             Juego.Movimientos = 5;
 
@@ -167,7 +167,6 @@ namespace LightBot.ViewModels
             else if (Resultado == "¡Felicidades, superaste el primer nivel!")
             {
                 NuevoJuego("2");
-                
             }
 
             else if (Resultado == "¡Felicidades, superaste el segundo nivel!")
@@ -179,13 +178,17 @@ namespace LightBot.ViewModels
             {
                 NuevoJuego("4");
             }
+            else if (Resultado=="¡Felicidades, superaste el cuarto nivel!")
+            {
+                Vista = "Inicio";
+            }
             else
             {
                 Vista = "VerNiveles";
-                
             }
             HayMensaje = false;
-            Actualizar();
+            Actualizar(); 
+            Resultado="";
         }
         private void FinDeJuego(bool ganojuego)
         {
@@ -227,7 +230,6 @@ namespace LightBot.ViewModels
                 HayMensaje = true;
                 //jugandoView.Close();
             }
-
             EnMovimiento = true;
             Actualizar("");
         }
@@ -258,7 +260,6 @@ namespace LightBot.ViewModels
         }
         #endregion
         #region Nivel 1
-
         public async void Mover()
         {
             EnMovimiento = false;
@@ -323,7 +324,6 @@ namespace LightBot.ViewModels
             EnMovimiento = true;
             Actualizar();
         }
-
         private void VerificarIntento()
         {
             if (Juego.Vidas >= 1)
@@ -651,7 +651,6 @@ namespace LightBot.ViewModels
                 GeneracionColAleatoria();
             }
         }
-
         private void GeneracionColAleatoria()
         {
             ColAleatoria = R.Next(0, 4);
@@ -727,7 +726,7 @@ namespace LightBot.ViewModels
                         }
                     }
                     //Abajo
-                    if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
+                     if (instrucciones[i] == abajo && Juego.Posicion[0] != '5')
                     {
                         //parar en la primera y tercera fila
                         if (juego.Posicion[1] == '1' || juego.Posicion[1] == '3')
@@ -739,24 +738,29 @@ namespace LightBot.ViewModels
                             Juego.Posicion[1] = (char)(Juego.Posicion[1] + 1);
                         }
                     }
-                    //Salto hacia abajo
+                   
                     if (instrucciones[i] == salto && i>=1)
                     {
-                        //Solo salta si el movimiento anterior es abajo
+                        //Salto hacia abajo
                         if ((juego.Posicion[1] == '1' || juego.Posicion[1] == '3') && instrucciones[i - 1] == abajo)
                         {
                             juego.Posicion[1] = (char)(Juego.Posicion[1] + 2);
                         }
-                    }
-                    //Salto hacia arriba
-                    if (instrucciones[i] == salto && i>=1)
-                    {
-                        //Solo salta si el movimiento anterior es arriba
+                        else if (i>=2 && (juego.Posicion[1]=='1'||juego.Posicion[1]=='3') && (instrucciones[i-1]==salto && instrucciones[i-2]==abajo))
+                        {
+                            juego.Posicion[1] = (char)(Juego.Posicion[1] + 2);
+                        } 
+                        //Salto hacia arriba
                         if ((juego.Posicion[1] == '5'||juego.Posicion[1] == '3') && instrucciones[i - 1] == arriba)
                         {
                             juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
                         }
+                        else if (i>=2 && (juego.Posicion[1]=='1'||juego.Posicion[1]=='3') && (instrucciones[i-1]==salto && instrucciones[i-2]==arriba))
+                        {
+                            juego.Posicion[1] = (char)(Juego.Posicion[1] - 2);
+                        }
                     }
+
                     //Quitamos un movimiento
                     Juego.Movimientos -= 1;
                     //Ver si la monita se movio a un cactus para que pierda una vida

@@ -6,7 +6,7 @@
         xmlns:vistas="clr-namespace:LightBot.Views"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LightBot"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Name="Inicio"
         Title="Light Bot" Height="810" Width="1350">
     <Window.Resources>
         <vistas:MensajeView x:Key="MensajeView"></vistas:MensajeView>
@@ -34,8 +34,6 @@
                 <DataTrigger Binding="{Binding Vista}" Value="Instrucciones">
                     <Setter Property="Content" Value="{StaticResource Instrucciones}"></Setter>
                 </DataTrigger>
-
-
             </Style.Triggers>
         </Style>
     </Window.Resources>
@@ -43,8 +41,8 @@
         <vm:LightBotViewModel></vm:LightBotViewModel>
     </Window.DataContext>
     <Grid>
-          <ContentControl>
-    </ContentControl>
+        <ContentControl>
+        </ContentControl>
         <Grid>
             <Grid.Resources>
                 <Style TargetType="Grid">
@@ -56,7 +54,7 @@
                     </Style.Triggers>
                 </Style>
             </Grid.Resources>
-           
+
             <Grid.Background>
                 <SolidColorBrush Color="#f4dfba" Opacity=".4"></SolidColorBrush>
             </Grid.Background>
@@ -75,16 +73,13 @@
                                 <Setter Property="BorderThickness" Value="0"></Setter>
                                 <Setter Property="Height" Value="45"></Setter>
                                 <Setter Property="Width" Value="110"></Setter>
-
                             </Style>
                         </WrapPanel.Resources>
                         <Button  Background="#CA965C" Command="{Binding VerNivelesCommand}" FontFamily="Cooper" Foreground="white" FontSize="16">Aceptar</Button>
 
                     </WrapPanel>
                 </DockPanel>
-
             </Border>
         </Grid>
     </Grid>
-  
 </Window>
